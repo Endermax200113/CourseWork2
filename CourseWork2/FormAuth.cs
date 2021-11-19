@@ -130,33 +130,23 @@ namespace CourseWork2
             if (_isFormLogin)
             {
                 if (_animWavePressLogin.Value > 0 && _animWavePressLogin.Value < _animWavePressLogin.TargetValue)
-                {
                     g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
-                }
                 else if (_animWavePressLogin.Value == _animWavePressLogin.TargetValue)
                 {
                     _animWavePressLogin.Value = -1;
                     g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
                 }
                 else
-                {
                     g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-                }
             }
             else
             {
                 if (_animWavePressLogin.Value > 0)
-                {
                     g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
-                }
                 else if (_animWavePressLogin.Value == _animWavePressLogin.TargetValue)
-                {
                     _animWavePressLogin.Value = 0;
-                }
                 else
-                {
                     g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
-                }
             }
 
             g.DrawString(btnLogin.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rect, _sf);

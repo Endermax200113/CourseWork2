@@ -90,6 +90,7 @@
             this.tbPassword.TabIndex = 6;
             this.tbPassword.Text = "Пароль";
             this.tbPassword.Enter += new System.EventHandler(this.TbPassword_OnFocusEnter);
+            this.tbPassword.Leave += new System.EventHandler(this.TbPassword_OnFocusLeave);
             // 
             // tbPasswordFalse
             // 
@@ -139,7 +140,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(50)))));
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(50)))));
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -153,6 +154,8 @@
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Войти";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnLogin_OnPaint);
+            this.btnLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_OnMouseDown);
             // 
             // FormLogin
             // 
@@ -181,10 +184,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbLoginFalse;
         private System.Windows.Forms.TextBox tbLogin;
-<<<<<<< HEAD
         private System.Windows.Forms.TextBox tbPasswordFalse;
         private System.Windows.Forms.TextBox tbPassword;
-=======
->>>>>>> aa0e1cd116101e4dea56803681bf3d7476b64806
     }
 }
