@@ -38,6 +38,7 @@ namespace CourseWork2.UI.Forms
 
             lblTitle.Font = new Font(_pfc.Families[0], 25, FontStyle.Regular);
             tbLogin.Font = new Font("Montserrat", 13, FontStyle.Regular);
+            tbPassword.Font = new Font("Montserrat", 13, FontStyle.Regular);
         }
         #endregion
 
@@ -66,8 +67,34 @@ namespace CourseWork2.UI.Forms
             }
         }
         #endregion
-        #endregion
 
+        #region -[Регистрация]-
+        private void TbPasswordFalse_OnFocusEnter(object sender, EventArgs e)
+        {
+            tbPassword.Focus();
+        }
+
+        private void TbPassword_OnFocusEnter(object sender, EventArgs e)
+        {
+            if (tbPassword.ForeColor == Color.FromArgb(154, 154, 154))
+            {
+                tbPassword.Text = "";
+                tbPassword.ForeColor = Color.White;
+                tbPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void TbPassword_OnFocusLeave(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "")
+            {
+                tbPassword.Text = "Пароль";
+                tbPassword.ForeColor = Color.FromArgb(154, 154, 154);
+                tbPassword.UseSystemPasswordChar = false;
+            }
+        }
+        #endregion
+        #endregion
         #endregion
     }
 }
