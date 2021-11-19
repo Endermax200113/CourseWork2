@@ -31,10 +31,16 @@
             this.pnlTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlMain = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.tbLoginFalse = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+=======
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.tbLoginFalse = new System.Windows.Forms.TextBox();
+            this.tbLogin = new System.Windows.Forms.TextBox();
+>>>>>>> aa0e1cd116101e4dea56803681bf3d7476b64806
             this.pnlTitle.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +72,10 @@
             // 
             // pnlMain
             // 
+<<<<<<< HEAD
             this.pnlMain.Controls.Add(this.textBox1);
+=======
+>>>>>>> aa0e1cd116101e4dea56803681bf3d7476b64806
             this.pnlMain.Controls.Add(this.tbLogin);
             this.pnlMain.Controls.Add(this.tbLoginFalse);
             this.pnlMain.Controls.Add(this.btnLogin);
@@ -75,6 +84,7 @@
             this.pnlMain.Size = new System.Drawing.Size(354, 278);
             this.pnlMain.TabIndex = 1;
             // 
+<<<<<<< HEAD
             // tbLogin
             // 
             this.tbLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(40)))), ((int)(((byte)(59)))));
@@ -89,6 +99,24 @@
             this.tbLogin.Text = "Логин";
             this.tbLogin.Enter += new System.EventHandler(this.TbLogin_OnFocusEnter);
             this.tbLogin.Leave += new System.EventHandler(this.TbLogin_OnFocusLeave);
+=======
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(50)))));
+            this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(116, 199);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(122, 35);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "Войти";
+            this.btnLogin.UseVisualStyleBackColor = false;
+>>>>>>> aa0e1cd116101e4dea56803681bf3d7476b64806
             // 
             // tbLoginFalse
             // 
@@ -106,6 +134,7 @@
             this.tbLoginFalse.TabIndex = 3;
             this.tbLoginFalse.Enter += new System.EventHandler(this.TbLoginFalse_OnFocusEnter);
             // 
+<<<<<<< HEAD
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(50)))));
@@ -133,6 +162,22 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(220, 35);
             this.textBox1.TabIndex = 5;
+=======
+            // tbLogin
+            // 
+            this.tbLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(40)))), ((int)(((byte)(59)))));
+            this.tbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbLogin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(154)))), ((int)(((byte)(154)))));
+            this.tbLogin.Location = new System.Drawing.Point(72, 50);
+            this.tbLogin.Margin = new System.Windows.Forms.Padding(0);
+            this.tbLogin.Name = "tbLogin";
+            this.tbLogin.Size = new System.Drawing.Size(210, 20);
+            this.tbLogin.TabIndex = 4;
+            this.tbLogin.Text = "Логин";
+            this.tbLogin.Enter += new System.EventHandler(this.TbLogin_OnFocusEnter);
+            this.tbLogin.Leave += new System.EventHandler(this.TbLogin_OnFocusLeave);
+>>>>>>> aa0e1cd116101e4dea56803681bf3d7476b64806
             // 
             // FormLogin
             // 
@@ -161,6 +206,9 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbLoginFalse;
         private System.Windows.Forms.TextBox tbLogin;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox textBox1;
+=======
+>>>>>>> aa0e1cd116101e4dea56803681bf3d7476b64806
     }
 }
