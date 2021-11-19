@@ -103,9 +103,7 @@ namespace CourseWork2.UI.Forms
         private void BtnLogin_OnMouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            {
                 _mousePressedLogin = false;
-            }
         }
         #endregion
         #endregion

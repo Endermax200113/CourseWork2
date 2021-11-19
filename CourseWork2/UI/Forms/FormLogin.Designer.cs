@@ -42,6 +42,8 @@
             // 
             // pnlTitle
             // 
+            this.pnlTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTitle.Controls.Add(this.lblTitle);
             this.pnlTitle.Location = new System.Drawing.Point(0, 25);
             this.pnlTitle.Margin = new System.Windows.Forms.Padding(0);
@@ -67,12 +69,16 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.Controls.Add(this.tbPassword);
             this.pnlMain.Controls.Add(this.tbPasswordFalse);
             this.pnlMain.Controls.Add(this.tbLogin);
             this.pnlMain.Controls.Add(this.tbLoginFalse);
             this.pnlMain.Controls.Add(this.btnLogin);
             this.pnlMain.Location = new System.Drawing.Point(0, 75);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(354, 278);
             this.pnlMain.TabIndex = 1;
@@ -140,7 +146,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(50)))));
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -149,6 +155,7 @@
             this.btnLogin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(116, 199);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(122, 35);
             this.btnLogin.TabIndex = 2;

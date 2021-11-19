@@ -2,17 +2,11 @@
 using CourseWork2.UI;
 using CourseWork2.UI.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Animations;
 
@@ -274,7 +268,6 @@ namespace CourseWork2
             if (!_isFormLogin && _animStrip.Value != 177)
             {
                 _animStrip = new Animation("stripMove_" + pnlStrip.Handle, Move, 0, 177);
-
                 Animator.Request(_animStrip, true);
 
                 void Move()
@@ -292,6 +285,8 @@ namespace CourseWork2
                         act();
                     }
                 }
+
+                OpenChildForm(new FormReg());
             }
         }
 
