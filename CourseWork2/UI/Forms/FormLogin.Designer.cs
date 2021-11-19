@@ -140,7 +140,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(50)))));
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -156,6 +156,7 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnLogin_OnPaint);
             this.btnLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_OnMouseDown);
+            this.btnLogin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_OnMouseUp);
             // 
             // FormLogin
             // 

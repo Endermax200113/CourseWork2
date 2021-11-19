@@ -21,6 +21,7 @@ namespace CourseWork2.UI.Forms
         #region -[Войти]-
         private Point _clLocationLogin = new Point();
         private Animation _animWavePressLogin = new Animation();
+        private bool _mousePressedLogin = false;
         #endregion
         #endregion
         #endregion
@@ -50,8 +51,8 @@ namespace CourseWork2.UI.Forms
             }
 
             lblTitle.Font = new Font(_pfc.Families[0], 25, FontStyle.Regular);
-            tbLogin.Font = new Font("Montserrat", 13, FontStyle.Regular);
-            tbPassword.Font = new Font("Montserrat", 13, FontStyle.Regular);
+            tbLogin.Font = new Font("Montserrat", 12, FontStyle.Regular);
+            tbPassword.Font = new Font("Montserrat", 12, FontStyle.Regular);
             btnLogin.Font = new Font(_pfc.Families[0], 13, FontStyle.Regular);
         }
         #endregion
@@ -77,11 +78,12 @@ namespace CourseWork2.UI.Forms
             else if (_animWavePressLogin.Value == _animWavePressLogin.TargetValue)
             {
                 _animWavePressLogin.Value = -1;
-                g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-            }
-            else
-                g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
 
+                if (_mousePressedLogin)
+                {
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+            }
 
             g.DrawString(btnLogin.Text, new Font(_pfc.Families[0], 13), new SolidBrush(Color.White), rect, _sf);
         }
@@ -90,6 +92,7 @@ namespace CourseWork2.UI.Forms
         {
             if (e.Button == MouseButtons.Left)
             {
+                _mousePressedLogin = true;
                 _clLocationLogin = e.Location;
 
                 _animWavePressLogin = new Animation("btnLoginPress_" + btnLogin.Handle, btnLogin.Invalidate, 0, btnLogin.Width * 2);
@@ -100,7 +103,9 @@ namespace CourseWork2.UI.Forms
         private void BtnLogin_OnMouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                btnLogin.Invalidate();
+            {
+                _mousePressedLogin = false;
+            }
         }
         #endregion
         #endregion
