@@ -80,9 +80,7 @@ namespace CourseWork2.UI.Forms
                 _animWavePressLogin.Value = -1;
 
                 if (_mousePressedLogin)
-                {
                     g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-                }
             }
 
             g.DrawString(btnLogin.Text, new Font(_pfc.Families[0], 13), new SolidBrush(Color.White), rect, _sf);

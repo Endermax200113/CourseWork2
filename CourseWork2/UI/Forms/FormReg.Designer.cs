@@ -96,6 +96,7 @@
             this.tbLoginFalse.ReadOnly = true;
             this.tbLoginFalse.Size = new System.Drawing.Size(220, 35);
             this.tbLoginFalse.TabIndex = 0;
+            this.tbLoginFalse.Enter += new System.EventHandler(this.TbLoginFalse_OnFocusEnter);
             // 
             // tbLogin
             // 
@@ -109,6 +110,8 @@
             this.tbLogin.Size = new System.Drawing.Size(210, 20);
             this.tbLogin.TabIndex = 1;
             this.tbLogin.Text = "Логин";
+            this.tbLogin.Enter += new System.EventHandler(this.TbLogin_OnFocusEnter);
+            this.tbLogin.Leave += new System.EventHandler(this.TbLogin_OnFocusLeave);
             // 
             // tbPasswordFalse
             // 
@@ -123,6 +126,7 @@
             this.tbPasswordFalse.ReadOnly = true;
             this.tbPasswordFalse.Size = new System.Drawing.Size(220, 35);
             this.tbPasswordFalse.TabIndex = 2;
+            this.tbPasswordFalse.Enter += new System.EventHandler(this.TbPasswordFalse_OnFocusEnter);
             // 
             // tbPassword
             // 
@@ -136,6 +140,8 @@
             this.tbPassword.Size = new System.Drawing.Size(210, 20);
             this.tbPassword.TabIndex = 3;
             this.tbPassword.Text = "Пароль";
+            this.tbPassword.Enter += new System.EventHandler(this.TbPassword_OnFocusEnter);
+            this.tbPassword.Leave += new System.EventHandler(this.TbPassword_OnFocusLeave);
             // 
             // tbPasswordRepeatFalse
             // 
@@ -150,6 +156,7 @@
             this.tbPasswordRepeatFalse.ReadOnly = true;
             this.tbPasswordRepeatFalse.Size = new System.Drawing.Size(220, 35);
             this.tbPasswordRepeatFalse.TabIndex = 4;
+            this.tbPasswordRepeatFalse.Enter += new System.EventHandler(this.TbPasswordRepeatFalse_OnFocusEnter);
             // 
             // tbPasswordRepeat
             // 
@@ -163,6 +170,8 @@
             this.tbPasswordRepeat.Size = new System.Drawing.Size(210, 20);
             this.tbPasswordRepeat.TabIndex = 5;
             this.tbPasswordRepeat.Text = "Повторный пароль";
+            this.tbPasswordRepeat.Enter += new System.EventHandler(this.TbPasswordRepeat_OnFocusEnter);
+            this.tbPasswordRepeat.Leave += new System.EventHandler(this.TbPasswordRepeat_OnFocusLeave);
             // 
             // btnReg
             // 
@@ -182,6 +191,9 @@
             this.btnReg.Text = "Зарегистрироваться";
             this.btnReg.UseCompatibleTextRendering = true;
             this.btnReg.UseVisualStyleBackColor = false;
+            this.btnReg.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnReg_OnPaint);
+            this.btnReg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnReg_OnMouseDown);
+            this.btnReg.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnReg_OnMouseUp);
             // 
             // FormReg
             // 

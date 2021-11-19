@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI.Animations;
 
 namespace CourseWork2.UI.Forms
 {
@@ -18,12 +20,24 @@ namespace CourseWork2.UI.Forms
         #region [Переменные]
         #region -> Общие
         private PrivateFontCollection _pfc = new PrivateFontCollection();
+        private StringFormat _sf = new StringFormat();
+        #endregion
+
+        #region ->Кнопки
+        #region -[Зарегистрироваться]-
+        private Point _clLocationReg = new Point();
+        private Animation _animWavePressReg = new Animation();
+        private bool _mousePressedReg = false;
+        #endregion
         #endregion
         #endregion
 
         public FormReg()
         {
             InitializeComponent();
+
+            _sf.Alignment = StringAlignment.Center;
+            _sf.LineAlignment = StringAlignment.Center;
         }
 
         #region [Слушатели]
@@ -48,6 +62,136 @@ namespace CourseWork2.UI.Forms
             tbPasswordRepeat.Font = new Font("Montserrat", 12, FontStyle.Regular);
             btnReg.Font = new Font(_pfc.Families[0], 13, FontStyle.Regular);
         }
+        #endregion
+
+        #region -> Поля
+        #region -[Логин]-
+        private void TbLoginFalse_OnFocusEnter(object sender, EventArgs e)
+        {
+            tbLogin.Focus();
+        }
+
+        private void TbLogin_OnFocusEnter(object sender, EventArgs e)
+        {
+            if (tbLogin.ForeColor == Color.FromArgb(154, 154, 154))
+            {
+                tbLogin.Text = "";
+                tbLogin.ForeColor = Color.White;
+            }
+        }
+
+        private void TbLogin_OnFocusLeave(object sender, EventArgs e)
+        {
+            if (tbLogin.Text == "")
+            {
+                tbLogin.Text = "Логин";
+                tbLogin.ForeColor = Color.FromArgb(154, 154, 154);
+            }
+        }
+        #endregion
+
+        #region -[Пароль]-
+        private void TbPasswordFalse_OnFocusEnter(object sender, EventArgs e)
+        {
+            tbPassword.Focus();
+        }
+
+        private void TbPassword_OnFocusEnter(object sender, EventArgs e)
+        {
+            if (tbPassword.ForeColor == Color.FromArgb(154, 154, 154))
+            {
+                tbPassword.Text = "";
+                tbPassword.ForeColor = Color.White;
+                tbPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void TbPassword_OnFocusLeave(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "")
+            {
+                tbPassword.Text = "Пароль";
+                tbPassword.ForeColor = Color.FromArgb(154, 154, 154);
+                tbPassword.UseSystemPasswordChar = false;
+            }
+        }
+        #endregion
+
+        #region -[Повторный пароль]-
+        private void TbPasswordRepeatFalse_OnFocusEnter(object sender, EventArgs e)
+        {
+            tbPasswordRepeat.Focus();
+        }
+
+        private void TbPasswordRepeat_OnFocusEnter(object sender, EventArgs e)
+        {
+            if (tbPasswordRepeat.ForeColor == Color.FromArgb(154, 154, 154))
+            {
+                tbPasswordRepeat.Text = "";
+                tbPasswordRepeat.ForeColor = Color.White;
+                tbPasswordRepeat.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void TbPasswordRepeat_OnFocusLeave(object sender, EventArgs e)
+        {
+            if (tbPasswordRepeat.Text == "")
+            {
+                tbPasswordRepeat.Text = "Пароль";
+                tbPasswordRepeat.ForeColor = Color.FromArgb(154, 154, 154);
+                tbPasswordRepeat.UseSystemPasswordChar = false;
+            }
+        }
+        #endregion
+        #endregion
+
+        #region -> Кнопки
+        #region -[Зарегистрироваться]-
+        private void BtnReg_OnPaint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(32, 34, 50));
+
+            Rectangle rectWave = new Rectangle(
+                _clLocationReg.X - (int)_animWavePressReg.Value / 2,
+                _clLocationReg.Y - (int)_animWavePressReg.Value / 2,
+                (int)_animWavePressReg.Value,
+                (int)_animWavePressReg.Value
+            );
+            Rectangle rect = new Rectangle(0, 0, btnReg.Width, btnReg.Height);
+
+            if (_animWavePressReg.Value > 0 && _animWavePressReg.Value < _animWavePressReg.TargetValue)
+                g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+            else if (_animWavePressReg.Value == _animWavePressReg.TargetValue)
+            {
+                _animWavePressReg.Value = -1;
+
+                if (_mousePressedReg)
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+
+            g.DrawString(btnReg.Text, new Font(_pfc.Families[0], 13), new SolidBrush(Color.White), rect, _sf);
+        }
+
+        private void BtnReg_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _mousePressedReg = true;
+                _clLocationReg = e.Location;
+
+                _animWavePressReg = new Animation("btnRegPress_" + btnReg.Handle, btnReg.Invalidate, 0, btnReg.Width * 2);
+                Animator.Request(_animWavePressReg, true);
+            }
+        }
+
+        private void BtnReg_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressedReg = false;
+        }
+        #endregion
         #endregion
         #endregion
     }
