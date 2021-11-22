@@ -137,7 +137,7 @@ namespace CourseWork2.UI.Forms
         {
             if (tbPasswordRepeat.Text == "")
             {
-                tbPasswordRepeat.Text = "Пароль";
+                tbPasswordRepeat.Text = "Повторный пароль";
                 tbPasswordRepeat.ForeColor = Color.FromArgb(154, 154, 154);
                 tbPasswordRepeat.UseSystemPasswordChar = false;
             }
