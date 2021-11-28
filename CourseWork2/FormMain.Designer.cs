@@ -33,6 +33,8 @@ namespace CourseWork2
             this.pnlHeaderForm = new System.Windows.Forms.Panel();
             this.pnlControl = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnMaxMin = new System.Windows.Forms.Button();
+            this.btnMinimaze = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.pnlHeaderForm.SuspendLayout();
             this.pnlControl.SuspendLayout();
@@ -66,6 +68,8 @@ namespace CourseWork2
             // pnlControl
             // 
             this.pnlControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlControl.Controls.Add(this.btnMinimaze);
+            this.pnlControl.Controls.Add(this.btnMaxMin);
             this.pnlControl.Controls.Add(this.btnClose);
             this.pnlControl.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlControl.Location = new System.Drawing.Point(725, 0);
@@ -94,6 +98,42 @@ namespace CourseWork2
             this.btnClose.MouseEnter += new System.EventHandler(this.BtnClose_OnMouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.BtnClose_OnMouseLeave);
             // 
+            // btnMaxMin
+            // 
+            this.btnMaxMin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMaxMin.FlatAppearance.BorderSize = 0;
+            this.btnMaxMin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMaxMin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMaxMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaxMin.Location = new System.Drawing.Point(25, 0);
+            this.btnMaxMin.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMaxMin.Name = "btnMaxMin";
+            this.btnMaxMin.Size = new System.Drawing.Size(25, 25);
+            this.btnMaxMin.TabIndex = 1;
+            this.btnMaxMin.UseVisualStyleBackColor = true;
+            this.btnMaxMin.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMaxMin_OnPaint);
+            this.btnMaxMin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMaxMin_OnMouseDown);
+            this.btnMaxMin.MouseEnter += new System.EventHandler(this.BtnMaxMin_OnMouseEnter);
+            this.btnMaxMin.MouseLeave += new System.EventHandler(this.BtnMaxMin_OnMouseLeave);
+            // 
+            // btnMinimaze
+            // 
+            this.btnMinimaze.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMinimaze.FlatAppearance.BorderSize = 0;
+            this.btnMinimaze.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMinimaze.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnMinimaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimaze.Location = new System.Drawing.Point(0, 0);
+            this.btnMinimaze.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMinimaze.Name = "btnMinimaze";
+            this.btnMinimaze.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimaze.TabIndex = 2;
+            this.btnMinimaze.UseVisualStyleBackColor = true;
+            this.btnMinimaze.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMinimaze_OnPaint);
+            this.btnMinimaze.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMinimaze_OnMouseDown);
+            this.btnMinimaze.MouseEnter += new System.EventHandler(this.BtnMinimaze_OnMouseEnter);
+            this.btnMinimaze.MouseLeave += new System.EventHandler(this.BtnMinimaze_OnMouseLeave);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,5 +158,7 @@ namespace CourseWork2
         private System.Windows.Forms.Panel pnlHeaderForm;
         private System.Windows.Forms.Panel pnlControl;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnMaxMin;
+        private System.Windows.Forms.Button btnMinimaze;
     }
 }

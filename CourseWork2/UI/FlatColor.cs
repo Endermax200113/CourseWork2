@@ -15,5 +15,10 @@ namespace CourseWork2.UI
         public static Color Pink = ColorTranslator.FromHtml("#ED4C67");
 
         public static Color Blue = ColorTranslator.FromHtml("#0652DD");
+
+        public static class Light
+        {
+            public static Color Yellow = ColorTranslator.FromHtml("#f1c40f");
+        }
     }
 }
