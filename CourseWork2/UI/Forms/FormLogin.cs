@@ -103,6 +103,13 @@ namespace CourseWork2.UI.Forms
             if (e.Button == MouseButtons.Left)
                 _mousePressedLogin = false;
         }
+
+        private void BtnLogin_OnClick(object sender, EventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
+            FormAuth.SelfForm.Hide();
+        }
         #endregion
         #endregion
 
@@ -158,7 +165,9 @@ namespace CourseWork2.UI.Forms
             }
         }
         #endregion
+
         #endregion
+
         #endregion
     }
 }

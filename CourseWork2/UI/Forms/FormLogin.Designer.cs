@@ -161,6 +161,7 @@
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Войти";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_OnClick);
             this.btnLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnLogin_OnPaint);
             this.btnLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_OnMouseDown);
             this.btnLogin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnLogin_OnMouseUp);

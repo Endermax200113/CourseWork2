@@ -20,6 +20,7 @@ namespace CourseWork2
         private bool _isFormLogin = true;
         private StringFormat _sf = new StringFormat();
         private Form _activeForm;
+        public static Form SelfForm { get; set; }
         #endregion
 
         #region -> Кнопки
@@ -59,9 +60,9 @@ namespace CourseWork2
             _animWavePressLogin.Value = btnLogin.Width * 2;
             _animWavePressReg.Value = 0;
             _animStrip.Value = 0;
-
             _sf.Alignment = StringAlignment.Center;
             _sf.LineAlignment = StringAlignment.Center;
+            SelfForm = this;
         }
 
         #region [Слушатели]
