@@ -13,7 +13,7 @@ using UI.Animations;
 
 namespace CourseWork2
 {
-    public partial class FormMain : Form
+    public partial class FormMain : ShadowForm
     {
         #region [Переменные]
         #region -> Кнопки
@@ -220,6 +220,16 @@ namespace CourseWork2
             Animator.Request(_animBtnMinimazeR, true);
             Animator.Request(_animBtnMinimazeG, true);
             Animator.Request(_animBtnMinimazeB, true);
+        }
+        #endregion
+        #endregion
+
+        #region -> Тексты
+        #region -[Заголовок]-
+        private void LblTitle_OnDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xF012, 0);
         }
         #endregion
         #endregion
