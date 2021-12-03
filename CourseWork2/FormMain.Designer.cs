@@ -94,7 +94,7 @@ namespace CourseWork2
             this.lblTitle.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.lblTitle.Size = new System.Drawing.Size(725, 25);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Сборка компьютеров";
+            this.lblTitle.Text = "Сборка компьютеров AvgElbrusEnjoyer";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblTitle_OnDown);
             // 

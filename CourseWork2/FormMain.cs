@@ -232,7 +232,9 @@ namespace CourseWork2
             SendMessage(Handle, 0x112, 0xF012, 0);
         }
         #endregion
+
         #endregion
+
         #endregion
     }
 }
