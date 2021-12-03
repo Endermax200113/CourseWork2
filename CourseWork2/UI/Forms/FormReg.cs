@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using UI.Animations;
@@ -215,11 +209,6 @@ namespace CourseWork2.UI.Forms
                     MessageBox.Show("У вас введены некорректные символы. Пожалуйста, введите только английские буквы и цифры", "Некорректные символы", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
-                    DB db = new DB();
-                    db.Connect();
-                }
             }
 
             if (tbPassword.Text.Length < 8)
@@ -237,6 +226,10 @@ namespace CourseWork2.UI.Forms
                 MessageBox.Show("Пароли, которые Вы ввели, не совпадают. Пожалуйста, проверьте, правильно ли Вы ввели пароль", "Пароли не совпадают", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            DB db = new DB();
+            db.Connect("Database\\Auth\\Accounts.mdf");
+            
         }
         #endregion
         #endregion

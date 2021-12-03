@@ -28,9 +28,10 @@ namespace CourseWork2.Database
 #endif
         }
 
-        public void Connect()
+        public void Connect(string path)
         {
-            _connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database\\Users\\Users.mdf;Integrated Security=True");
+
+            _connection = new SqlConnection($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\{path};Integrated Security=True");
 
             if (IsAvailable())
                 _connection.Open();
@@ -57,6 +58,9 @@ namespace CourseWork2.Database
             _connection.Close();
         }
 
+        public void Query(string query)
+        {
 
+        }
     }
 }
