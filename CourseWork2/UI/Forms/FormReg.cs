@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using UI.Animations;
+using CourseWork2.Database;
 
 namespace CourseWork2.UI.Forms
 {
@@ -213,6 +214,11 @@ namespace CourseWork2.UI.Forms
                 {
                     MessageBox.Show("У вас введены некорректные символы. Пожалуйста, введите только английские буквы и цифры", "Некорректные символы", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+                else
+                {
+                    DB db = new DB();
+                    db.Connect();
                 }
             }
 
