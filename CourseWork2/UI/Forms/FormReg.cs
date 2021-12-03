@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using UI.Animations;
 
@@ -190,6 +191,46 @@ namespace CourseWork2.UI.Forms
         {
             if (e.Button == MouseButtons.Left)
                 _mousePressedReg = false;
+        }
+
+        private void BtnReg_OnClick(object sender, EventArgs e)
+        {
+            if (tbLogin.Text.Length < 8)
+            {
+                MessageBox.Show("Вы ввели менее 8 символов логина", "Слишком мало символов", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (tbLogin.Text.Length > 16)
+            {
+                MessageBox.Show("Вы ввели более 16 символов логина", "Слишком много символов", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                string pattern = @"^[\w-[\d_А-Яа-я]][\w-[_]]{2,16}$";
+
+                if (!Regex.IsMatch(tbLogin.Text, pattern))
+                {
+                    MessageBox.Show("У вас введены некорректные символы. Пожалуйста, введите только английские буквы и цифры", "Некорректные символы", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (tbPassword.Text.Length < 8)
+            {
+                MessageBox.Show("Вы ввели менее 8 символов пароля", "Слишком мало символов", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (tbPassword.Text.Length > 64)
+            {
+                MessageBox.Show("Вы ввели более 64 сиволов пароля", "Слишком много символов", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (tbPassword.Text != tbPasswordRepeat.Text)
+            {
+                MessageBox.Show("Пароли, которые Вы ввели, не совпадают. Пожалуйста, проверьте, правильно ли Вы ввели пароль", "Пароли не совпадают", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
         #endregion
         #endregion
