@@ -58,9 +58,10 @@ namespace CourseWork2.Database
             _connection.Close();
         }
 
-        public void Query(string query)
+        public void ExecuteCommand(SqlCommand cmd)
         {
-
+            cmd.Connection = _connection;
+            cmd.ExecuteNonQuery();
         }
     }
 }
