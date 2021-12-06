@@ -146,12 +146,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Database\Auth\Account.mdf">
+    <Content Include="Database\Auth\Accounts.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database\Auth\Account_log.ldf">
+    <Content Include="Database\Auth\Accounts_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Account.mdf</DependentUpon>
+      <DependentUpon>Accounts.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
