@@ -11,6 +11,8 @@ using CourseWork2.Database;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace CourseWork2.UI.Forms
 {
@@ -256,8 +258,8 @@ namespace CourseWork2.UI.Forms
             }
 
             MySqlCommand cmd = new MySqlCommand("INSERT INTO `accounts`(`login`, `password`) VALUES(@login, @password)");
-            cmd.Parameters.Add("@login", MySqlDbType.VarChar).Value = tbLogin.Text;
-            cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = tbPassword.Text;
+            cmd.Parameters.Add("@login", MySqlDbType.VarChar).Value = EncodeString(tbLogin.Text);
+            cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = EncodeString(tbPassword.Text);
 
             db.ExecuteCommand(cmd);
             db.Disconnect();
@@ -275,6 +277,20 @@ namespace CourseWork2.UI.Forms
                 return true;
             else
                 return false;
+        }
+
+        private string EncodeString(string original)
+        {
+            using (SHA256 hash = SHA256.Create())
+            {
+                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(original));
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                    sb.Append(bytes[i].ToString("x2"));
+
+                return sb.ToString();
+            }
         }
         #endregion
     }

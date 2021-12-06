@@ -6,6 +6,8 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using UI.Animations;
 
@@ -184,8 +186,8 @@ namespace CourseWork2.UI.Forms
                 return false;
 
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM `accounts` WHERE `Login` = @Login AND `Password` = @Password");
-            cmd.Parameters.Add("@Login", MySqlDbType.VarChar).Value = tbLogin.Text;
-            cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = tbPassword.Text;
+            cmd.Parameters.Add("@Login", MySqlDbType.VarChar).Value = EncodeString(tbLogin.Text);
+            cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = EncodeString(tbPassword.Text);
             var table = db.Select(cmd);
 
             if (table.Rows.Count > 0)
@@ -194,6 +196,20 @@ namespace CourseWork2.UI.Forms
             {
                 MessageBox.Show("Вы ввели неправильный логин или пароль", "Неправильный логин или пароль", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        private string EncodeString(string original)
+        {
+            using (SHA256 hash = SHA256.Create())
+            {
+                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(original));
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                    sb.Append(bytes[i].ToString("x2"));
+
+                return sb.ToString();
             }
         }
         #endregion
