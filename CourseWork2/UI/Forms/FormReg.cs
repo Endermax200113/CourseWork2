@@ -10,6 +10,7 @@ using UI.Animations;
 using CourseWork2.Database;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace CourseWork2.UI.Forms
 {
@@ -229,11 +230,52 @@ namespace CourseWork2.UI.Forms
                 return;
             }
 
-            DB db = new DB();
-            
+            if (!Register())
+                return;
+
+            FormMain form = new FormMain();
+            form.Show();
+            FormAuth.SelfForm.Hide();
         }
         #endregion
         #endregion
+        #endregion
+
+        #region [Методы]
+        private bool Register()
+        {
+            DB db = new DB();
+
+            if (!db.Connect("coursework"))
+                return false;
+
+            if (ExistLogin(db))
+            {
+                MessageBox.Show("Логин уже занят. Пожалуйста, введите другой логин", "Логин уже занят", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `accounts`(`login`, `password`) VALUES(@login, @password)");
+            cmd.Parameters.Add("@login", MySqlDbType.VarChar).Value = tbLogin.Text;
+            cmd.Parameters.Add("@password", MySqlDbType.VarChar).Value = tbPassword.Text;
+
+            db.ExecuteCommand(cmd);
+            db.Disconnect();
+
+            return true;
+        }
+
+        private bool ExistLogin(DB db)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `accounts` WHERE `Login` = @Login");
+            cmd.Parameters.Add("@Login", MySqlDbType.VarChar).Value = tbLogin.Text;
+            var table = db.Select(cmd);
+
+            if (table.Rows.Count > 0)
+                return true;
+            else
+                return false;
+        }
         #endregion
     }
 }

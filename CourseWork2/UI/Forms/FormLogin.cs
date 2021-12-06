@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseWork2.Database;
+using MySql.Data.MySqlClient;
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -106,6 +108,9 @@ namespace CourseWork2.UI.Forms
 
         private void BtnLogin_OnClick(object sender, EventArgs e)
         {
+            if (!Auth())
+                return;
+
             FormMain form = new FormMain();
             form.Show();
             FormAuth.SelfForm.Hide();
@@ -168,6 +173,29 @@ namespace CourseWork2.UI.Forms
 
         #endregion
 
+        #endregion
+
+        #region [Методы]
+        private bool Auth()
+        {
+            DB db = new DB();
+
+            if (!db.Connect("coursework"))
+                return false;
+
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM `accounts` WHERE `Login` = @Login AND `Password` = @Password");
+            cmd.Parameters.Add("@Login", MySqlDbType.VarChar).Value = tbLogin.Text;
+            cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = tbPassword.Text;
+            var table = db.Select(cmd);
+
+            if (table.Rows.Count > 0)
+                return true;
+            else
+            {
+                MessageBox.Show("Вы ввели неправильный логин или пароль", "Неправильный логин или пароль", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
         #endregion
     }
 }
