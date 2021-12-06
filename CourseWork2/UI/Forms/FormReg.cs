@@ -8,8 +8,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using UI.Animations;
 using CourseWork2.Database;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace CourseWork2.UI.Forms
 {
@@ -231,7 +231,7 @@ namespace CourseWork2.UI.Forms
 
             DB db = new DB();
             db.Connect("Database\\Auth\\Accounts.mdf");
-            
+
             var cmd = new SqlCommand("INSERT INTO Accounts(login, password) VALUES (@login, @password);");
             cmd.Parameters.Add("@login", SqlDbType.VarChar);
             cmd.Parameters["@login"].Value = tbLogin.Text;
