@@ -230,20 +230,7 @@ namespace CourseWork2.UI.Forms
             }
 
             DB db = new DB();
-            db.Connect("Database\\Auth\\Accounts.mdf");
-
-            var cmd = new SqlCommand("INSERT INTO Accounts(login, password) VALUES (@login, @password);");
-            cmd.Parameters.Add("@login", SqlDbType.VarChar);
-            cmd.Parameters["@login"].Value = tbLogin.Text;
-            cmd.Parameters.Add("@password", SqlDbType.VarChar);
-            cmd.Parameters["@password"].Value = tbPassword.Text;
-
-            db.ExecuteCommand(cmd);
-            db.Disconnect();
-
-            FormMain form = new FormMain();
-            form.Show();
-            FormAuth.SelfForm.Hide();
+            
         }
         #endregion
         #endregion
