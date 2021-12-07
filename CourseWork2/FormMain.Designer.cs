@@ -37,6 +37,16 @@ namespace CourseWork2
             this.btnMinimaze = new System.Windows.Forms.Button();
             this.btnMaxMin = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.pnlBorderTopLeft = new System.Windows.Forms.Panel();
+            this.pnlBorderTop = new System.Windows.Forms.Panel();
+            this.pnlBorderTopRight = new System.Windows.Forms.Panel();
+            this.pnlBorderLeft1 = new System.Windows.Forms.Panel();
+            this.pnlBorderRight1 = new System.Windows.Forms.Panel();
+            this.pnlBorderBottomLeft = new System.Windows.Forms.Panel();
+            this.pnlBorderBottom = new System.Windows.Forms.Panel();
+            this.pnlBorderBottomRight = new System.Windows.Forms.Panel();
+            this.pnlBorderLeft2 = new System.Windows.Forms.Panel();
+            this.pnlBorderRight2 = new System.Windows.Forms.Panel();
             this.pnlMain.SuspendLayout();
             this.pnlHeaderForm.SuspendLayout();
             this.pnlTitle.SuspendLayout();
@@ -50,7 +60,7 @@ namespace CourseWork2
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
             this.pnlMain.Controls.Add(this.pnlHeaderForm);
-            this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Location = new System.Drawing.Point(5, 5);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(800, 450);
@@ -167,14 +177,127 @@ namespace CourseWork2
             this.btnClose.MouseEnter += new System.EventHandler(this.BtnClose_OnMouseEnter);
             this.btnClose.MouseLeave += new System.EventHandler(this.BtnClose_OnMouseLeave);
             // 
+            // pnlBorderTopLeft
+            // 
+            this.pnlBorderTopLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderTopLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlBorderTopLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderTopLeft.Name = "pnlBorderTopLeft";
+            this.pnlBorderTopLeft.Size = new System.Drawing.Size(5, 5);
+            this.pnlBorderTopLeft.TabIndex = 1;
+            // 
+            // pnlBorderTop
+            // 
+            this.pnlBorderTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBorderTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderTop.Location = new System.Drawing.Point(5, 0);
+            this.pnlBorderTop.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderTop.Name = "pnlBorderTop";
+            this.pnlBorderTop.Size = new System.Drawing.Size(800, 5);
+            this.pnlBorderTop.TabIndex = 2;
+            // 
+            // pnlBorderTopRight
+            // 
+            this.pnlBorderTopRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBorderTopRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderTopRight.Location = new System.Drawing.Point(805, 0);
+            this.pnlBorderTopRight.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderTopRight.Name = "pnlBorderTopRight";
+            this.pnlBorderTopRight.Size = new System.Drawing.Size(5, 5);
+            this.pnlBorderTopRight.TabIndex = 3;
+            // 
+            // pnlBorderLeft1
+            // 
+            this.pnlBorderLeft1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderLeft1.Location = new System.Drawing.Point(0, 5);
+            this.pnlBorderLeft1.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderLeft1.Name = "pnlBorderLeft1";
+            this.pnlBorderLeft1.Size = new System.Drawing.Size(5, 25);
+            this.pnlBorderLeft1.TabIndex = 4;
+            // 
+            // pnlBorderRight1
+            // 
+            this.pnlBorderRight1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBorderRight1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderRight1.Location = new System.Drawing.Point(805, 5);
+            this.pnlBorderRight1.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderRight1.Name = "pnlBorderRight1";
+            this.pnlBorderRight1.Size = new System.Drawing.Size(5, 25);
+            this.pnlBorderRight1.TabIndex = 5;
+            // 
+            // pnlBorderBottomLeft
+            // 
+            this.pnlBorderBottomLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnlBorderBottomLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderBottomLeft.Location = new System.Drawing.Point(0, 455);
+            this.pnlBorderBottomLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderBottomLeft.Name = "pnlBorderBottomLeft";
+            this.pnlBorderBottomLeft.Size = new System.Drawing.Size(5, 5);
+            this.pnlBorderBottomLeft.TabIndex = 6;
+            // 
+            // pnlBorderBottom
+            // 
+            this.pnlBorderBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBorderBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderBottom.Location = new System.Drawing.Point(5, 455);
+            this.pnlBorderBottom.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderBottom.Name = "pnlBorderBottom";
+            this.pnlBorderBottom.Size = new System.Drawing.Size(800, 5);
+            this.pnlBorderBottom.TabIndex = 7;
+            // 
+            // pnlBorderBottomRight
+            // 
+            this.pnlBorderBottomRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBorderBottomRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderBottomRight.Location = new System.Drawing.Point(805, 455);
+            this.pnlBorderBottomRight.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderBottomRight.Name = "pnlBorderBottomRight";
+            this.pnlBorderBottomRight.Size = new System.Drawing.Size(5, 5);
+            this.pnlBorderBottomRight.TabIndex = 8;
+            // 
+            // pnlBorderLeft2
+            // 
+            this.pnlBorderLeft2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnlBorderLeft2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderLeft2.Location = new System.Drawing.Point(0, 30);
+            this.pnlBorderLeft2.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderLeft2.Name = "pnlBorderLeft2";
+            this.pnlBorderLeft2.Size = new System.Drawing.Size(5, 425);
+            this.pnlBorderLeft2.TabIndex = 9;
+            // 
+            // pnlBorderRight2
+            // 
+            this.pnlBorderRight2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBorderRight2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderRight2.Location = new System.Drawing.Point(805, 30);
+            this.pnlBorderRight2.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlBorderRight2.Name = "pnlBorderRight2";
+            this.pnlBorderRight2.Size = new System.Drawing.Size(5, 425);
+            this.pnlBorderRight2.TabIndex = 10;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
+            this.ClientSize = new System.Drawing.Size(810, 460);
+            this.Controls.Add(this.pnlBorderRight2);
+            this.Controls.Add(this.pnlBorderLeft2);
+            this.Controls.Add(this.pnlBorderBottomRight);
+            this.Controls.Add(this.pnlBorderBottom);
+            this.Controls.Add(this.pnlBorderBottomLeft);
+            this.Controls.Add(this.pnlBorderRight1);
+            this.Controls.Add(this.pnlBorderLeft1);
+            this.Controls.Add(this.pnlBorderTopRight);
+            this.Controls.Add(this.pnlBorderTop);
+            this.Controls.Add(this.pnlBorderTopLeft);
             this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(800, 450);
+            this.MinimumSize = new System.Drawing.Size(810, 460);
             this.Name = "FormMain";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -197,5 +320,15 @@ namespace CourseWork2
         private System.Windows.Forms.Button btnMinimaze;
         private System.Windows.Forms.Panel pnlTitle;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel pnlBorderTopLeft;
+        private System.Windows.Forms.Panel pnlBorderTop;
+        private System.Windows.Forms.Panel pnlBorderTopRight;
+        private System.Windows.Forms.Panel pnlBorderLeft1;
+        private System.Windows.Forms.Panel pnlBorderRight1;
+        private System.Windows.Forms.Panel pnlBorderBottomLeft;
+        private System.Windows.Forms.Panel pnlBorderBottom;
+        private System.Windows.Forms.Panel pnlBorderBottomRight;
+        private System.Windows.Forms.Panel pnlBorderLeft2;
+        private System.Windows.Forms.Panel pnlBorderRight2;
     }
 }
