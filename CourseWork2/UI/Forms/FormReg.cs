@@ -89,6 +89,12 @@ namespace CourseWork2.UI.Forms
                 tbLogin.ForeColor = Color.FromArgb(154, 154, 154);
             }
         }
+
+        private void TbLogin_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbPassword.Focus();
+        }
         #endregion
 
         #region -[Пароль]-
@@ -116,6 +122,12 @@ namespace CourseWork2.UI.Forms
                 tbPassword.UseSystemPasswordChar = false;
             }
         }
+
+        private void TbPassword_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbPasswordRepeat.Focus();
+        }
         #endregion
 
         #region -[Повторный пароль]-
@@ -141,6 +153,19 @@ namespace CourseWork2.UI.Forms
                 tbPasswordRepeat.Text = "Повторный пароль";
                 tbPasswordRepeat.ForeColor = Color.FromArgb(154, 154, 154);
                 tbPasswordRepeat.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void TbPasswordRepeat_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!Register())
+                    return;
+
+                FormMain form = new FormMain();
+                form.Show();
+                FormAuth.SelfForm.Hide();
             }
         }
         #endregion

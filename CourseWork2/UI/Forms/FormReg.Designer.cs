@@ -119,6 +119,7 @@
             this.tbPasswordRepeat.TabIndex = 5;
             this.tbPasswordRepeat.Text = "Повторный пароль";
             this.tbPasswordRepeat.Enter += new System.EventHandler(this.TbPasswordRepeat_OnFocusEnter);
+            this.tbPasswordRepeat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbPasswordRepeat_OnKeyDown);
             this.tbPasswordRepeat.Leave += new System.EventHandler(this.TbPasswordRepeat_OnFocusLeave);
             // 
             // tbPasswordRepeatFalse
@@ -149,6 +150,7 @@
             this.tbPassword.TabIndex = 3;
             this.tbPassword.Text = "Пароль";
             this.tbPassword.Enter += new System.EventHandler(this.TbPassword_OnFocusEnter);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbPassword_OnKeyDown);
             this.tbPassword.Leave += new System.EventHandler(this.TbPassword_OnFocusLeave);
             // 
             // tbPasswordFalse
@@ -179,6 +181,7 @@
             this.tbLogin.TabIndex = 1;
             this.tbLogin.Text = "Логин";
             this.tbLogin.Enter += new System.EventHandler(this.TbLogin_OnFocusEnter);
+            this.tbLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbLogin_OnKeyDown);
             this.tbLogin.Leave += new System.EventHandler(this.TbLogin_OnFocusLeave);
             // 
             // tbLoginFalse

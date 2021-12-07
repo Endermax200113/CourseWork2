@@ -144,9 +144,15 @@ namespace CourseWork2.UI.Forms
                 tbLogin.ForeColor = Color.FromArgb(154, 154, 154);
             }
         }
+
+        private void TbLogin_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                tbPassword.Focus();
+        }
         #endregion
 
-        #region -[Регистрация]-
+        #region -[Пароль]-
         private void TbPasswordFalse_OnFocusEnter(object sender, EventArgs e)
         {
             tbPassword.Focus();
@@ -171,10 +177,21 @@ namespace CourseWork2.UI.Forms
                 tbPassword.UseSystemPasswordChar = false;
             }
         }
-        #endregion
 
-        #endregion
+        private void TbPassword_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!Auth())
+                    return;
 
+                FormMain form = new FormMain();
+                form.Show();
+                FormAuth.SelfForm.Hide();
+            }
+        }
+        #endregion
+        #endregion
         #endregion
 
         #region [Методы]

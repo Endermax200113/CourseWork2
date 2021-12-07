@@ -96,6 +96,7 @@
             this.tbPassword.TabIndex = 6;
             this.tbPassword.Text = "Пароль";
             this.tbPassword.Enter += new System.EventHandler(this.TbPassword_OnFocusEnter);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbPassword_OnKeyDown);
             this.tbPassword.Leave += new System.EventHandler(this.TbPassword_OnFocusLeave);
             // 
             // tbPasswordFalse
@@ -126,6 +127,7 @@
             this.tbLogin.TabIndex = 4;
             this.tbLogin.Text = "Логин";
             this.tbLogin.Enter += new System.EventHandler(this.TbLogin_OnFocusEnter);
+            this.tbLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbLogin_OnKeyDown);
             this.tbLogin.Leave += new System.EventHandler(this.TbLogin_OnFocusLeave);
             // 
             // tbLoginFalse
