@@ -180,6 +180,7 @@ namespace CourseWork2
             // pnlBorderTopLeft
             // 
             this.pnlBorderTopLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderTopLeft.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.pnlBorderTopLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlBorderTopLeft.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderTopLeft.Name = "pnlBorderTopLeft";
@@ -191,6 +192,7 @@ namespace CourseWork2
             this.pnlBorderTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBorderTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderTop.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.pnlBorderTop.Location = new System.Drawing.Point(5, 0);
             this.pnlBorderTop.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderTop.Name = "pnlBorderTop";
@@ -201,6 +203,7 @@ namespace CourseWork2
             // 
             this.pnlBorderTopRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBorderTopRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderTopRight.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.pnlBorderTopRight.Location = new System.Drawing.Point(805, 0);
             this.pnlBorderTopRight.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderTopRight.Name = "pnlBorderTopRight";
@@ -210,6 +213,7 @@ namespace CourseWork2
             // pnlBorderLeft1
             // 
             this.pnlBorderLeft1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderLeft1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.pnlBorderLeft1.Location = new System.Drawing.Point(0, 5);
             this.pnlBorderLeft1.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderLeft1.Name = "pnlBorderLeft1";
@@ -220,6 +224,7 @@ namespace CourseWork2
             // 
             this.pnlBorderRight1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBorderRight1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderRight1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.pnlBorderRight1.Location = new System.Drawing.Point(805, 5);
             this.pnlBorderRight1.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderRight1.Name = "pnlBorderRight1";
@@ -230,6 +235,7 @@ namespace CourseWork2
             // 
             this.pnlBorderBottomLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlBorderBottomLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderBottomLeft.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.pnlBorderBottomLeft.Location = new System.Drawing.Point(0, 455);
             this.pnlBorderBottomLeft.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderBottomLeft.Name = "pnlBorderBottomLeft";
@@ -241,6 +247,7 @@ namespace CourseWork2
             this.pnlBorderBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBorderBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderBottom.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.pnlBorderBottom.Location = new System.Drawing.Point(5, 455);
             this.pnlBorderBottom.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderBottom.Name = "pnlBorderBottom";
@@ -251,6 +258,7 @@ namespace CourseWork2
             // 
             this.pnlBorderBottomRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBorderBottomRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderBottomRight.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.pnlBorderBottomRight.Location = new System.Drawing.Point(805, 455);
             this.pnlBorderBottomRight.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderBottomRight.Name = "pnlBorderBottomRight";
@@ -262,6 +270,7 @@ namespace CourseWork2
             this.pnlBorderLeft2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlBorderLeft2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderLeft2.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.pnlBorderLeft2.Location = new System.Drawing.Point(0, 30);
             this.pnlBorderLeft2.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderLeft2.Name = "pnlBorderLeft2";
@@ -273,6 +282,7 @@ namespace CourseWork2
             this.pnlBorderRight2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBorderRight2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlBorderRight2.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.pnlBorderRight2.Location = new System.Drawing.Point(805, 30);
             this.pnlBorderRight2.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBorderRight2.Name = "pnlBorderRight2";
