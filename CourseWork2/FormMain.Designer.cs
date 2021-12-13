@@ -186,6 +186,9 @@ namespace CourseWork2
             this.pnlBorderTopLeft.Name = "pnlBorderTopLeft";
             this.pnlBorderTopLeft.Size = new System.Drawing.Size(5, 5);
             this.pnlBorderTopLeft.TabIndex = 1;
+            this.pnlBorderTopLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTopLeft_OnMouseDown);
+            this.pnlBorderTopLeft.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTopLeft_OnMouseMove);
+            this.pnlBorderTopLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTopLeft_OnMouseUp);
             // 
             // pnlBorderTop
             // 
@@ -198,6 +201,9 @@ namespace CourseWork2
             this.pnlBorderTop.Name = "pnlBorderTop";
             this.pnlBorderTop.Size = new System.Drawing.Size(800, 5);
             this.pnlBorderTop.TabIndex = 2;
+            this.pnlBorderTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTop_OnMouseDown);
+            this.pnlBorderTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTop_OnMouseMove);
+            this.pnlBorderTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTop_OnMouseUp);
             // 
             // pnlBorderTopRight
             // 
@@ -209,6 +215,9 @@ namespace CourseWork2
             this.pnlBorderTopRight.Name = "pnlBorderTopRight";
             this.pnlBorderTopRight.Size = new System.Drawing.Size(5, 5);
             this.pnlBorderTopRight.TabIndex = 3;
+            this.pnlBorderTopRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTopRight_OnMouseDown);
+            this.pnlBorderTopRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTopRight_OnMouseMove);
+            this.pnlBorderTopRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderTopRight_OnMouseUp);
             // 
             // pnlBorderLeft1
             // 
@@ -219,6 +228,9 @@ namespace CourseWork2
             this.pnlBorderLeft1.Name = "pnlBorderLeft1";
             this.pnlBorderLeft1.Size = new System.Drawing.Size(5, 25);
             this.pnlBorderLeft1.TabIndex = 4;
+            this.pnlBorderLeft1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseDown);
+            this.pnlBorderLeft1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseMove);
+            this.pnlBorderLeft1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBoderLeft_OnMouseUp);
             // 
             // pnlBorderRight1
             // 
@@ -230,6 +242,9 @@ namespace CourseWork2
             this.pnlBorderRight1.Name = "pnlBorderRight1";
             this.pnlBorderRight1.Size = new System.Drawing.Size(5, 25);
             this.pnlBorderRight1.TabIndex = 5;
+            this.pnlBorderRight1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseDown);
+            this.pnlBorderRight1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseMove);
+            this.pnlBorderRight1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseUp);
             // 
             // pnlBorderBottomLeft
             // 
@@ -241,6 +256,9 @@ namespace CourseWork2
             this.pnlBorderBottomLeft.Name = "pnlBorderBottomLeft";
             this.pnlBorderBottomLeft.Size = new System.Drawing.Size(5, 5);
             this.pnlBorderBottomLeft.TabIndex = 6;
+            this.pnlBorderBottomLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottomLeft_OnMouseDown);
+            this.pnlBorderBottomLeft.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottomLeft_OnMouseMove);
+            this.pnlBorderBottomLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottomLeft_OnMouseUp);
             // 
             // pnlBorderBottom
             // 
@@ -253,6 +271,9 @@ namespace CourseWork2
             this.pnlBorderBottom.Name = "pnlBorderBottom";
             this.pnlBorderBottom.Size = new System.Drawing.Size(800, 5);
             this.pnlBorderBottom.TabIndex = 7;
+            this.pnlBorderBottom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottom_OnMouseDown);
+            this.pnlBorderBottom.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottom_OnMouseMove);
+            this.pnlBorderBottom.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottom_OnMouseUp);
             // 
             // pnlBorderBottomRight
             // 
@@ -264,6 +285,9 @@ namespace CourseWork2
             this.pnlBorderBottomRight.Name = "pnlBorderBottomRight";
             this.pnlBorderBottomRight.Size = new System.Drawing.Size(5, 5);
             this.pnlBorderBottomRight.TabIndex = 8;
+            this.pnlBorderBottomRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottomRight_OnMouseDown);
+            this.pnlBorderBottomRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottomRight_OnMouseMove);
+            this.pnlBorderBottomRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderBottomRight_OnMouseUp);
             // 
             // pnlBorderLeft2
             // 
@@ -276,6 +300,9 @@ namespace CourseWork2
             this.pnlBorderLeft2.Name = "pnlBorderLeft2";
             this.pnlBorderLeft2.Size = new System.Drawing.Size(5, 425);
             this.pnlBorderLeft2.TabIndex = 9;
+            this.pnlBorderLeft2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseDown);
+            this.pnlBorderLeft2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseMove);
+            this.pnlBorderLeft2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBoderLeft_OnMouseUp);
             // 
             // pnlBorderRight2
             // 
@@ -288,6 +315,9 @@ namespace CourseWork2
             this.pnlBorderRight2.Name = "pnlBorderRight2";
             this.pnlBorderRight2.Size = new System.Drawing.Size(5, 425);
             this.pnlBorderRight2.TabIndex = 10;
+            this.pnlBorderRight2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseDown);
+            this.pnlBorderRight2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseMove);
+            this.pnlBorderRight2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseUp);
             // 
             // FormMain
             // 

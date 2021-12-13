@@ -16,6 +16,12 @@ namespace CourseWork2
     public partial class FormMain : ShadowForm
     {
         #region [Переменные]
+        #region -> Общие
+        private Point _locCursor = new Point();
+        private Size _sizeForm = new Size();
+        private bool _mousePressed = false;
+        #endregion
+
         #region -> Кнопки
         #region -[Закрыть окно]-
         private Animation _animBtnCloseA = new Animation();
@@ -232,9 +238,279 @@ namespace CourseWork2
             SendMessage(Handle, 0x112, 0xF012, 0);
         }
         #endregion
-
         #endregion
 
+        #region -> Панели
+        #region -[Границы]-
+        #region {Верхний левый}
+        private void PnlBorderTopLeft_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
+                int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+
+                if (w <= MinimumSize.Width && h <= MinimumSize.Height)
+                    MoveWindow(Handle, _locCursor.X, _locCursor.Y, MinimumSize.Width, MinimumSize.Height, true);
+                else if (w <= MinimumSize.Width)
+                    MoveWindow(Handle, _locCursor.X, Cursor.Position.Y, MinimumSize.Width, h, true);
+                else if (h <= MinimumSize.Height)
+                    MoveWindow(Handle, Cursor.Position.X, _locCursor.Y, w, MinimumSize.Height, true);
+                else
+                    MoveWindow(Handle, Cursor.Position.X, Cursor.Position.Y, w, h, true);
+            }
+        }
+
+        private void PnlBorderTopLeft_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBorderTopLeft_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            _mousePressed = false;
+        }
+        #endregion
+        #region {Верхний}
+        private void PnlBorderTop_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+
+                if (h <= MinimumSize.Height)
+                    MoveWindow(Handle, Left, _locCursor.Y, _sizeForm.Width, MinimumSize.Height, true);
+                else
+                    MoveWindow(Handle, Left, Cursor.Position.Y, _sizeForm.Width, h, true);
+            }
+        }
+
+        private void PnlBorderTop_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBorderTop_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #region {Верхний правый}
+        private void PnlBorderTopRight_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
+                int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+
+                if (w <= MinimumSize.Width && h <= MinimumSize.Height)
+                    MoveWindow(Handle, Left, _locCursor.Y, MinimumSize.Width, MinimumSize.Height, true);
+                else if (w <= MinimumSize.Width)
+                    MoveWindow(Handle, Left, Cursor.Position.Y, MinimumSize.Width, h, true);
+                else if (h <= MinimumSize.Height)
+                    MoveWindow(Handle, Left, _locCursor.Y, w, MinimumSize.Height, true);
+                else
+                    MoveWindow(Handle, Left, Cursor.Position.Y, w, h, true);
+            }
+        }
+
+        private void PnlBorderTopRight_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBorderTopRight_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #region {Правый}
+        private void PnlBorderRight_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
+
+                if (w <= MinimumSize.Width)
+                    MoveWindow(Handle, Left, Top, MinimumSize.Width, _sizeForm.Height, true);
+                else
+                    MoveWindow(Handle, Left, Top, w, _sizeForm.Height, true);
+            }
+        }
+
+        private void PnlBorderRight_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBorderRight_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #region {Нижний правый}
+        private void PnlBorderBottomRight_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
+                int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
+
+                if (w <= MinimumSize.Width && h <= MinimumSize.Height)
+                    MoveWindow(Handle, Left, Top, MinimumSize.Width, MinimumSize.Height, true);
+                else if (w <= MinimumSize.Width)
+                    MoveWindow(Handle, Left, Top, MinimumSize.Width, h, true);
+                else if (h <= MinimumSize.Height)
+                    MoveWindow(Handle, Left, Top, w, MinimumSize.Height, true);
+                else
+                    MoveWindow(Handle, Left, Top, w, h, true);
+            }
+        }
+
+        private void PnlBorderBottomRight_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBorderBottomRight_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #region {Нижний}
+        private void PnlBorderBottom_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
+
+                if (h <= MinimumSize.Height)
+                    MoveWindow(Handle, Left, Top, _sizeForm.Width, MinimumSize.Height, true);
+                else
+                    MoveWindow(Handle, Left, Top, _sizeForm.Width, h, true);
+            }
+        }
+
+        private void PnlBorderBottom_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        } 
+
+        private void PnlBorderBottom_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #region {Нижний левый}
+        private void PnlBorderBottomLeft_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
+                int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
+
+                if (w <= MinimumSize.Height && h <= MinimumSize.Height)
+                    MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, MinimumSize.Height, true);
+                else if (w <= MinimumSize.Width)
+                    MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, h, true);
+                else if (h <= MinimumSize.Height)
+                    MoveWindow(Handle, Cursor.Position.X, Top, w, MinimumSize.Height, true);
+                else
+                    MoveWindow(Handle, Cursor.Position.X, Top, w, h, true);
+            }
+        }
+
+        private void PnlBorderBottomLeft_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBorderBottomLeft_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #region {Левый}
+        private void PnlBorderLeft_OnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (!_mousePressed)
+            {
+                _locCursor = Cursor.Position;
+                _sizeForm = Size;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
+
+                if (w <= MinimumSize.Width)
+                    MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, _sizeForm.Height, true);
+                else
+                    MoveWindow(Handle, Cursor.Position.X, Top, w, _sizeForm.Height, true);
+            }
+        }
+
+        private void PnlBorderLeft_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = true;
+        }
+
+        private void PnlBoderLeft_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
+        }
+        #endregion
+        #endregion
+        #endregion
         #endregion
     }
 }

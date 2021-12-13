@@ -11,16 +11,22 @@ namespace CourseWork2.UI
         private const int WM_NCPAINT = 0x0085;
 
         [DllImport("dwmapi.dll")]
-        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+        public extern static int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+        
         [DllImport("dwmapi.dll")]
-        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+        public extern static int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+        
         [DllImport("dwmapi.dll")]
-        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
+        public extern static int DwmIsCompositionEnabled(ref int pfEnabled);
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         protected extern static void ReleaseCapture();
+        
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         protected extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        protected internal extern static bool MoveWindow(IntPtr hWnd, int x, int y, int nWidth, int nHeight, bool bRepaint);
 
         public struct MARGINS
         {

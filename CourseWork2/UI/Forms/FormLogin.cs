@@ -110,18 +110,19 @@ namespace CourseWork2.UI.Forms
 
         private void BtnLogin_OnClick(object sender, EventArgs e)
         {
+#if !DEBUG
             if (!Auth())
                 return;
-
+#endif
             FormMain form = new FormMain();
             form.Show();
             FormAuth.SelfForm.Hide();
         }
-        #endregion
-        #endregion
+#endregion
+#endregion
 
-        #region -> Поля
-        #region -[Логин]-
+#region -> Поля
+#region -[Логин]-
         private void TbLoginFalse_OnFocusEnter(object sender, EventArgs e)
         {
             tbLogin.Focus();
@@ -150,9 +151,9 @@ namespace CourseWork2.UI.Forms
             if (e.KeyCode == Keys.Enter)
                 tbPassword.Focus();
         }
-        #endregion
+#endregion
 
-        #region -[Пароль]-
+#region -[Пароль]-
         private void TbPasswordFalse_OnFocusEnter(object sender, EventArgs e)
         {
             tbPassword.Focus();
@@ -190,11 +191,11 @@ namespace CourseWork2.UI.Forms
                 FormAuth.SelfForm.Hide();
             }
         }
-        #endregion
-        #endregion
-        #endregion
+#endregion
+#endregion
+#endregion
 
-        #region [Методы]
+#region [Методы]
         private bool Auth()
         {
             DB db = new DB();
@@ -229,6 +230,6 @@ namespace CourseWork2.UI.Forms
                 return sb.ToString();
             }
         }
-        #endregion
+#endregion
     }
 }
