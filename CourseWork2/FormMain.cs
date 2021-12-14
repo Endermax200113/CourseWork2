@@ -49,6 +49,7 @@ namespace CourseWork2
         public FormMain()
         {
             InitializeComponent();
+            SetDoubleBuffered(this);
 
             _animBtnCloseA.Value = 255;
             _animBtnCloseR.Value = 26;
@@ -254,13 +255,15 @@ namespace CourseWork2
             {
                 int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
                 int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+                int minX = _sizeForm.Width - MinimumSize.Width + _locCursor.X;
+                int minY = _sizeForm.Height - MinimumSize.Height + _locCursor.Y;
 
                 if (w <= MinimumSize.Width && h <= MinimumSize.Height)
-                    MoveWindow(Handle, _locCursor.X, _locCursor.Y, MinimumSize.Width, MinimumSize.Height, true);
+                    MoveWindow(Handle, minX, minY, MinimumSize.Width, MinimumSize.Height, true);
                 else if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, _locCursor.X, Cursor.Position.Y, MinimumSize.Width, h, true);
+                    MoveWindow(Handle, minX, Cursor.Position.Y, MinimumSize.Width, h, true);
                 else if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Cursor.Position.X, _locCursor.Y, w, MinimumSize.Height, true);
+                    MoveWindow(Handle, Cursor.Position.X, minY, w, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Cursor.Position.X, Cursor.Position.Y, w, h, true);
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -81,6 +82,19 @@ namespace CourseWork2.UI
                 return (enabled == 1) ? true : false;
             }
             return false;
+        }
+
+        public static void SetDoubleBuffered(Control c)
+        {
+            if (SystemInformation.TerminalServerSession)
+                return;
+
+            PropertyInfo pDblBuffered = typeof(Control).GetProperty(
+                "DoubleBuffered",
+                BindingFlags.NonPublic |
+                BindingFlags.Instance);
+
+            pDblBuffered.SetValue(c, true, null);
         }
     }
 }

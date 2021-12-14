@@ -1,4 +1,6 @@
 ﻿
+using CourseWork2.UI.Controls;
+
 namespace CourseWork2
 {
     partial class FormMain
@@ -29,24 +31,24 @@ namespace CourseWork2
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlMain = new System.Windows.Forms.Panel();
-            this.pnlHeaderForm = new System.Windows.Forms.Panel();
-            this.pnlTitle = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.pnlControl = new System.Windows.Forms.Panel();
-            this.btnMinimaze = new System.Windows.Forms.Button();
-            this.btnMaxMin = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.pnlBorderTopLeft = new System.Windows.Forms.Panel();
-            this.pnlBorderTop = new System.Windows.Forms.Panel();
-            this.pnlBorderTopRight = new System.Windows.Forms.Panel();
-            this.pnlBorderLeft1 = new System.Windows.Forms.Panel();
-            this.pnlBorderRight1 = new System.Windows.Forms.Panel();
-            this.pnlBorderBottomLeft = new System.Windows.Forms.Panel();
-            this.pnlBorderBottom = new System.Windows.Forms.Panel();
-            this.pnlBorderBottomRight = new System.Windows.Forms.Panel();
-            this.pnlBorderLeft2 = new System.Windows.Forms.Panel();
-            this.pnlBorderRight2 = new System.Windows.Forms.Panel();
+            this.pnlMain = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlHeaderForm = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlTitle = new CourseWork2.UI.Controls.FlatPanel();
+            this.lblTitle = new CourseWork2.UI.Controls.FlatLabel();
+            this.pnlControl = new CourseWork2.UI.Controls.FlatPanel();
+            this.btnMinimaze = new CourseWork2.UI.Controls.FlatButton();
+            this.btnMaxMin = new CourseWork2.UI.Controls.FlatButton();
+            this.btnClose = new CourseWork2.UI.Controls.FlatButton();
+            this.pnlBorderTopLeft = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderTop = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderTopRight = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderLeft1 = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderRight1 = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderBottomLeft = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderBottom = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderBottomRight = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderLeft2 = new CourseWork2.UI.Controls.FlatPanel();
+            this.pnlBorderRight2 = new CourseWork2.UI.Controls.FlatPanel();
             this.pnlMain.SuspendLayout();
             this.pnlHeaderForm.SuspendLayout();
             this.pnlTitle.SuspendLayout();
@@ -336,6 +338,7 @@ namespace CourseWork2
             this.Controls.Add(this.pnlBorderTop);
             this.Controls.Add(this.pnlBorderTopLeft);
             this.Controls.Add(this.pnlMain);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(810, 460);
             this.Name = "FormMain";
@@ -352,23 +355,23 @@ namespace CourseWork2
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Panel pnlHeaderForm;
-        private System.Windows.Forms.Panel pnlControl;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnMaxMin;
-        private System.Windows.Forms.Button btnMinimaze;
-        private System.Windows.Forms.Panel pnlTitle;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Panel pnlBorderTopLeft;
-        private System.Windows.Forms.Panel pnlBorderTop;
-        private System.Windows.Forms.Panel pnlBorderTopRight;
-        private System.Windows.Forms.Panel pnlBorderLeft1;
-        private System.Windows.Forms.Panel pnlBorderRight1;
-        private System.Windows.Forms.Panel pnlBorderBottomLeft;
-        private System.Windows.Forms.Panel pnlBorderBottom;
-        private System.Windows.Forms.Panel pnlBorderBottomRight;
-        private System.Windows.Forms.Panel pnlBorderLeft2;
-        private System.Windows.Forms.Panel pnlBorderRight2;
+        private FlatPanel pnlMain;
+        private FlatPanel pnlHeaderForm;
+        private FlatPanel pnlControl;
+        private FlatButton btnClose;
+        private FlatButton btnMaxMin;
+        private FlatButton btnMinimaze;
+        private FlatPanel pnlTitle;
+        private FlatLabel lblTitle;
+        private FlatPanel pnlBorderTopLeft;
+        private FlatPanel pnlBorderTop;
+        private FlatPanel pnlBorderTopRight;
+        private FlatPanel pnlBorderLeft1;
+        private FlatPanel pnlBorderRight1;
+        private FlatPanel pnlBorderBottomLeft;
+        private FlatPanel pnlBorderBottom;
+        private FlatPanel pnlBorderBottomRight;
+        private FlatPanel pnlBorderLeft2;
+        private FlatPanel pnlBorderRight2;
     }
 }
