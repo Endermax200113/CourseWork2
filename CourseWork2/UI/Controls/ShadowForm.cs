@@ -43,8 +43,11 @@ namespace CourseWork2.UI
             {
                 m_aeroEnabled = CheckAeroEnabled();
                 CreateParams cp = base.CreateParams;
+                
                 if (!m_aeroEnabled)
-                    cp.ClassStyle |= CS_DROPSHADOW; return cp;
+                    cp.ClassStyle |= CS_DROPSHADOW; 
+                
+                return cp;
             }
         }
 

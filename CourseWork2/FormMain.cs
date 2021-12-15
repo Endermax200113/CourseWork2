@@ -266,6 +266,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Cursor.Position.X, minY, w, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Cursor.Position.X, Cursor.Position.Y, w, h, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -296,6 +299,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Left, _locCursor.Y, _sizeForm.Width, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Left, Cursor.Position.Y, _sizeForm.Width, h, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -332,6 +338,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Left, _locCursor.Y, w, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Left, Cursor.Position.Y, w, h, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -363,6 +372,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Left, Top, MinimumSize.Width, _sizeForm.Height, true);
                 else
                     MoveWindow(Handle, Left, Top, w, _sizeForm.Height, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -399,6 +411,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Left, Top, w, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Left, Top, w, h, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -430,6 +445,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Left, Top, _sizeForm.Width, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Left, Top, _sizeForm.Width, h, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -466,6 +484,9 @@ namespace CourseWork2
                     MoveWindow(Handle, Cursor.Position.X, Top, w, MinimumSize.Height, true);
                 else
                     MoveWindow(Handle, Cursor.Position.X, Top, w, h, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
@@ -497,6 +518,9 @@ namespace CourseWork2
                     MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, _sizeForm.Height, true);
                 else
                     MoveWindow(Handle, Cursor.Position.X, Top, w, _sizeForm.Height, true);
+
+                foreach (Control ctrl in Controls)
+                    ctrl.Refresh();
             }
         }
 
