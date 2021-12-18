@@ -37,6 +37,32 @@ namespace CourseWork2.UI
             public int bottomHeight;
         }
 
+        protected enum TaskBarLocation
+        {
+            Top, Bottom, Left, Right
+        }
+
+        protected TaskBarLocation LocationOfTaskBar
+        {
+            get
+            {
+                TaskBarLocation loc = TaskBarLocation.Bottom;
+                int taskbarW = Screen.PrimaryScreen.Bounds.Width - Screen.PrimaryScreen.WorkingArea.Width;
+                int taskbarH = Screen.PrimaryScreen.Bounds.Height - Screen.PrimaryScreen.WorkingArea.Height;
+
+                if (Screen.PrimaryScreen.WorkingArea.Top > 0)
+                    loc = TaskBarLocation.Top;
+                else if (Screen.PrimaryScreen.WorkingArea.Left > 0)
+                    loc = TaskBarLocation.Left;
+                else if (Screen.PrimaryScreen.WorkingArea.Top == 0 && taskbarH > 0)
+                    loc = TaskBarLocation.Bottom;
+                else if (Screen.PrimaryScreen.WorkingArea.Left == 0 && taskbarW > 0)
+                    loc = TaskBarLocation.Right;
+
+				return loc;
+            }
+        }
+
         protected override CreateParams CreateParams
         {
             get

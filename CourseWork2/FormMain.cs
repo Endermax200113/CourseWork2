@@ -17,8 +17,6 @@ namespace CourseWork2
     {
         #region [Переменные]
         #region -> Общие
-        private Point _locCursor = new Point();
-        private Size _sizeForm = new Size();
         private bool _mousePressed = false;
         #endregion
 
@@ -43,6 +41,13 @@ namespace CourseWork2
         private Animation _animBtnMinimazeG = new Animation();
         private Animation _animBtnMinimazeB = new Animation();
         #endregion
+        #endregion
+
+        #region -> Окно
+        private Point _locCursor = new Point();
+        private Size _sizeForm = new Size();
+        private Point _locPrevForm = new Point();
+        private bool _formMaximazed = false;
         #endregion
         #endregion
 
@@ -120,6 +125,14 @@ namespace CourseWork2
             Animator.Request(_animBtnCloseB, true);
         }
 
+        private void BtnClose_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            _animBtnCloseA = new Animation("btnCloseA_" + btnClose.Handle, btnClose.Invalidate, _animBtnCloseA.Value, 255);
+
+            _animBtnCloseA.StepDivider = 5;
+            Animator.Request(_animBtnCloseA, true);
+        }
+
         private void BtnClose_OnClick(object sender, EventArgs e)
         {
             Application.Exit();
@@ -176,6 +189,22 @@ namespace CourseWork2
             Animator.Request(_animBtnMaxMinG, true);
             Animator.Request(_animBtnMaxMinB, true);
         }
+
+        private void BtnMaxMin_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            _animBtnMaxMinA = new Animation("btnMaxMinA_" + btnMaxMin.Handle, btnMaxMin.Invalidate, _animBtnMaxMinA.Value, 255);
+
+            _animBtnMaxMinA.StepDivider = 5;
+            Animator.Request(_animBtnMaxMinA, true);
+        }
+
+        private void BtnMaxMin_OnClick(object sender, EventArgs e)
+		{
+            if (!_formMaximazed)
+                Maximaze();
+            else
+                Minimaze();
+		}
         #endregion
 
         #region -[Свернуть]-
@@ -228,6 +257,14 @@ namespace CourseWork2
             Animator.Request(_animBtnMinimazeG, true);
             Animator.Request(_animBtnMinimazeB, true);
         }
+
+        private void BtnMinimaze_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            _animBtnMinimazeA = new Animation("btnMinimazeA_" + btnMinimaze.Handle, btnMinimaze.Invalidate, _animBtnMinimazeA.Value, 255);
+
+            _animBtnMinimazeA.StepDivider = 5;
+            Animator.Request(_animBtnMinimazeA, true);
+        }
         #endregion
         #endregion
 
@@ -235,8 +272,12 @@ namespace CourseWork2
         #region -[Заголовок]-
         private void LblTitle_OnDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(Handle, 0x112, 0xF012, 0);
+            if (!_formMaximazed)
+			{
+
+                ReleaseCapture();
+                SendMessage(Handle, 0x112, 0xF012, 0);
+            }
         }
         #endregion
         #endregion
@@ -246,30 +287,32 @@ namespace CourseWork2
         #region {Верхний левый}
         private void PnlBorderTopLeft_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
-                int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
-                int minX = _sizeForm.Width - MinimumSize.Width + _locCursor.X;
-                int minY = _sizeForm.Height - MinimumSize.Height + _locCursor.Y;
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
+                    int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+                    int minX = _sizeForm.Width - MinimumSize.Width + _locCursor.X;
+                    int minY = _sizeForm.Height - MinimumSize.Height + _locCursor.Y;
 
-                if (w <= MinimumSize.Width && h <= MinimumSize.Height)
-                    MoveWindow(Handle, minX, minY, MinimumSize.Width, MinimumSize.Height, true);
-                else if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, minX, Cursor.Position.Y, MinimumSize.Width, h, true);
-                else if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Cursor.Position.X, minY, w, MinimumSize.Height, true);
-                else
-                    MoveWindow(Handle, Cursor.Position.X, Cursor.Position.Y, w, h, true);
+                    if (w <= MinimumSize.Width && h <= MinimumSize.Height)
+                        MoveWindow(Handle, minX, minY, MinimumSize.Width, MinimumSize.Height, true);
+                    else if (w <= MinimumSize.Width)
+                        MoveWindow(Handle, minX, Cursor.Position.Y, MinimumSize.Width, h, true);
+                    else if (h <= MinimumSize.Height)
+                        MoveWindow(Handle, Cursor.Position.X, minY, w, MinimumSize.Height, true);
+                    else
+                        MoveWindow(Handle, Cursor.Position.X, Cursor.Position.Y, w, h, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
-            }
+                    MakeChangesOfForm();
+                }
+			}
         }
 
         private void PnlBorderTopLeft_OnMouseDown(object sender, MouseEventArgs e)
@@ -280,29 +323,32 @@ namespace CourseWork2
 
         private void PnlBorderTopLeft_OnMouseUp(object sender, MouseEventArgs e)
         {
-            _mousePressed = false;
+            if (e.Button == MouseButtons.Left)
+                _mousePressed = false;
         }
         #endregion
         #region {Верхний}
         private void PnlBorderTop_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
 
-                if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Left, _locCursor.Y, _sizeForm.Width, MinimumSize.Height, true);
-                else
-                    MoveWindow(Handle, Left, Cursor.Position.Y, _sizeForm.Width, h, true);
+                    if (h <= MinimumSize.Height)
+                        MoveWindow(Handle, Left, _locCursor.Y, _sizeForm.Width, MinimumSize.Height, true);
+                    else
+                        MoveWindow(Handle, Left, Cursor.Position.Y, _sizeForm.Width, h, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
-            }
+                    MakeChangesOfForm();
+                }
+			}
         }
 
         private void PnlBorderTop_OnMouseDown(object sender, MouseEventArgs e)
@@ -320,28 +366,30 @@ namespace CourseWork2
         #region {Верхний правый}
         private void PnlBorderTopRight_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
-                int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
+                    int h = _sizeForm.Height + (_locCursor.Y - Cursor.Position.Y);
 
-                if (w <= MinimumSize.Width && h <= MinimumSize.Height)
-                    MoveWindow(Handle, Left, _locCursor.Y, MinimumSize.Width, MinimumSize.Height, true);
-                else if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, Left, Cursor.Position.Y, MinimumSize.Width, h, true);
-                else if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Left, _locCursor.Y, w, MinimumSize.Height, true);
-                else
-                    MoveWindow(Handle, Left, Cursor.Position.Y, w, h, true);
+                    if (w <= MinimumSize.Width && h <= MinimumSize.Height)
+                        MoveWindow(Handle, Left, _locCursor.Y, MinimumSize.Width, MinimumSize.Height, true);
+                    else if (w <= MinimumSize.Width)
+                        MoveWindow(Handle, Left, Cursor.Position.Y, MinimumSize.Width, h, true);
+                    else if (h <= MinimumSize.Height)
+                        MoveWindow(Handle, Left, _locCursor.Y, w, MinimumSize.Height, true);
+                    else
+                        MoveWindow(Handle, Left, Cursor.Position.Y, w, h, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
-            }
+                    MakeChangesOfForm();
+                }
+			}
         }
 
         private void PnlBorderTopRight_OnMouseDown(object sender, MouseEventArgs e)
@@ -359,23 +407,25 @@ namespace CourseWork2
         #region {Правый}
         private void PnlBorderRight_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
 
-                if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, Left, Top, MinimumSize.Width, _sizeForm.Height, true);
-                else
-                    MoveWindow(Handle, Left, Top, w, _sizeForm.Height, true);
+                    if (w <= MinimumSize.Width)
+                        MoveWindow(Handle, Left, Top, MinimumSize.Width, _sizeForm.Height, true);
+                    else
+                        MoveWindow(Handle, Left, Top, w, _sizeForm.Height, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
-            }
+                    MakeChangesOfForm();
+                }
+			}
         }
 
         private void PnlBorderRight_OnMouseDown(object sender, MouseEventArgs e)
@@ -393,27 +443,29 @@ namespace CourseWork2
         #region {Нижний правый}
         private void PnlBorderBottomRight_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
-                int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int w = _sizeForm.Width - (_locCursor.X - Cursor.Position.X);
+                    int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
 
-                if (w <= MinimumSize.Width && h <= MinimumSize.Height)
-                    MoveWindow(Handle, Left, Top, MinimumSize.Width, MinimumSize.Height, true);
-                else if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, Left, Top, MinimumSize.Width, h, true);
-                else if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Left, Top, w, MinimumSize.Height, true);
-                else
-                    MoveWindow(Handle, Left, Top, w, h, true);
+                    if (w <= MinimumSize.Width && h <= MinimumSize.Height)
+                        MoveWindow(Handle, Left, Top, MinimumSize.Width, MinimumSize.Height, true);
+                    else if (w <= MinimumSize.Width)
+                        MoveWindow(Handle, Left, Top, MinimumSize.Width, h, true);
+                    else if (h <= MinimumSize.Height)
+                        MoveWindow(Handle, Left, Top, w, MinimumSize.Height, true);
+                    else
+                        MoveWindow(Handle, Left, Top, w, h, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
+                    MakeChangesOfForm();
+                }
             }
         }
 
@@ -432,22 +484,24 @@ namespace CourseWork2
         #region {Нижний}
         private void PnlBorderBottom_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
+            if (!_formMaximazed)
             {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
 
-                if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Left, Top, _sizeForm.Width, MinimumSize.Height, true);
-                else
-                    MoveWindow(Handle, Left, Top, _sizeForm.Width, h, true);
+                    if (h <= MinimumSize.Height)
+                        MoveWindow(Handle, Left, Top, _sizeForm.Width, MinimumSize.Height, true);
+                    else
+                        MoveWindow(Handle, Left, Top, _sizeForm.Width, h, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
+                    MakeChangesOfForm();
+                }
             }
         }
 
@@ -466,28 +520,30 @@ namespace CourseWork2
         #region {Нижний левый}
         private void PnlBorderBottomLeft_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
-                int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
+                    int h = _sizeForm.Height - (_locCursor.Y - Cursor.Position.Y);
 
-                if (w <= MinimumSize.Height && h <= MinimumSize.Height)
-                    MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, MinimumSize.Height, true);
-                else if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, h, true);
-                else if (h <= MinimumSize.Height)
-                    MoveWindow(Handle, Cursor.Position.X, Top, w, MinimumSize.Height, true);
-                else
-                    MoveWindow(Handle, Cursor.Position.X, Top, w, h, true);
+                    if (w <= MinimumSize.Height && h <= MinimumSize.Height)
+                        MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, MinimumSize.Height, true);
+                    else if (w <= MinimumSize.Width)
+                        MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, h, true);
+                    else if (h <= MinimumSize.Height)
+                        MoveWindow(Handle, Cursor.Position.X, Top, w, MinimumSize.Height, true);
+                    else
+                        MoveWindow(Handle, Cursor.Position.X, Top, w, h, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
-            }
+                    MakeChangesOfForm();
+                }
+			}
         }
 
         private void PnlBorderBottomLeft_OnMouseDown(object sender, MouseEventArgs e)
@@ -505,22 +561,24 @@ namespace CourseWork2
         #region {Левый}
         private void PnlBorderLeft_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!_mousePressed)
-            {
-                _locCursor = Cursor.Position;
-                _sizeForm = Size;
-            }
-            else if (e.Button == MouseButtons.Left)
-            {
-                int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
+            if (!_formMaximazed)
+			{
+                if (!_mousePressed)
+                {
+                    _locCursor = Cursor.Position;
+                    _sizeForm = Size;
+                }
+                else if (e.Button == MouseButtons.Left)
+                {
+                    int w = _sizeForm.Width + (_locCursor.X - Cursor.Position.X);
 
-                if (w <= MinimumSize.Width)
-                    MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, _sizeForm.Height, true);
-                else
-                    MoveWindow(Handle, Cursor.Position.X, Top, w, _sizeForm.Height, true);
+                    if (w <= MinimumSize.Width)
+                        MoveWindow(Handle, _locCursor.X, Top, MinimumSize.Width, _sizeForm.Height, true);
+                    else
+                        MoveWindow(Handle, Cursor.Position.X, Top, w, _sizeForm.Height, true);
 
-                foreach (Control ctrl in Controls)
-                    ctrl.Refresh();
+                    MakeChangesOfForm();
+                }
             }
         }
 
@@ -535,9 +593,67 @@ namespace CourseWork2
             if (e.Button == MouseButtons.Left)
                 _mousePressed = false;
         }
-        #endregion
-        #endregion
-        #endregion
-        #endregion
-    }
+		#endregion
+		#endregion
+		#endregion
+		#endregion
+
+		#region [Методы]
+        private void MakeChangesOfForm()
+		{
+            foreach (Control ctrl in Controls)
+                ctrl.Refresh();
+        }
+
+        private void Maximaze()
+		{
+            _sizeForm = Size;
+            _locPrevForm = Location;
+
+            int w = Screen.PrimaryScreen.WorkingArea.Width;
+            int h = Screen.PrimaryScreen.WorkingArea.Height;
+            int taskbarW = Screen.PrimaryScreen.Bounds.Width - w;
+            int taskbarH = Screen.PrimaryScreen.Bounds.Height - h;
+            Console.WriteLine(LocationOfTaskBar);
+
+            if (LocationOfTaskBar == TaskBarLocation.Bottom || LocationOfTaskBar == TaskBarLocation.Right)
+                MoveWindow(Handle, 0, 0, w, h, true);
+            else if (LocationOfTaskBar == TaskBarLocation.Top)
+                MoveWindow(Handle, 0, taskbarH, w, h, true);
+            else if (LocationOfTaskBar == TaskBarLocation.Left)
+                MoveWindow(Handle, taskbarW, 0, w, h, true);
+
+            pnlBorderTopLeft.Cursor = Cursors.Default;
+            pnlBorderTop.Cursor = Cursors.Default;
+            pnlBorderTopRight.Cursor = Cursors.Default;
+            pnlBorderRight1.Cursor = Cursors.Default;
+            pnlBorderRight2.Cursor = Cursors.Default;
+            pnlBorderBottomRight.Cursor = Cursors.Default;
+            pnlBorderBottom.Cursor = Cursors.Default;
+            pnlBorderBottomLeft.Cursor = Cursors.Default;
+            pnlBorderLeft1.Cursor = Cursors.Default;
+            pnlBorderLeft2.Cursor = Cursors.Default;
+
+            _formMaximazed = true;
+		}
+
+        private void Minimaze()
+        {
+            MoveWindow(Handle, _locPrevForm.X, _locPrevForm.Y, _sizeForm.Width, _sizeForm.Height, true);
+
+            pnlBorderTopLeft.Cursor = Cursors.SizeNWSE;
+            pnlBorderTop.Cursor = Cursors.SizeNS;
+            pnlBorderTopRight.Cursor = Cursors.SizeNESW;
+            pnlBorderRight1.Cursor = Cursors.SizeWE;
+            pnlBorderRight2.Cursor = Cursors.SizeWE;
+            pnlBorderBottomRight.Cursor = Cursors.SizeNWSE;
+            pnlBorderBottom.Cursor = Cursors.SizeNS;
+            pnlBorderBottomLeft.Cursor = Cursors.SizeNESW;
+            pnlBorderLeft1.Cursor = Cursors.SizeWE;
+            pnlBorderLeft2.Cursor = Cursors.SizeWE;
+
+            _formMaximazed = false;
+		}
+		#endregion
+	}
 }
