@@ -265,6 +265,11 @@ namespace CourseWork2
             _animBtnMinimazeA.StepDivider = 5;
             Animator.Request(_animBtnMinimazeA, true);
         }
+
+        private void BtnMinimaze_OnClick(object sender, EventArgs e)
+		{
+            WindowState = FormWindowState.Minimized;
+		}
         #endregion
         #endregion
 
@@ -272,12 +277,22 @@ namespace CourseWork2
         #region -[Заголовок]-
         private void LblTitle_OnDown(object sender, MouseEventArgs e)
         {
-            if (!_formMaximazed)
+            if (_formMaximazed)
 			{
+                Minimaze();
 
-                ReleaseCapture();
-                SendMessage(Handle, 0x112, 0xF012, 0);
+                if (Cursor.Position.X < Location.X)
+                    Location = new Point(Cursor.Position.X - 15, Location.Y);
+                if (Cursor.Position.X > Location.X + 5 + lblTitle.Width)
+                    Location = new Point(Cursor.Position.X - 5 - lblTitle.Width + 10, Location.Y);
+                if (Cursor.Position.Y < Location.Y)
+                    Location = new Point(Location.X, Cursor.Position.Y - 15);
+                if (Cursor.Position.Y > Location.Y + 30)
+                    Location = new Point(Location.X, Cursor.Position.Y - 15);
             }
+
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xF012, 0);
         }
         #endregion
         #endregion
@@ -614,7 +629,6 @@ namespace CourseWork2
             int h = Screen.PrimaryScreen.WorkingArea.Height;
             int taskbarW = Screen.PrimaryScreen.Bounds.Width - w;
             int taskbarH = Screen.PrimaryScreen.Bounds.Height - h;
-            Console.WriteLine(LocationOfTaskBar);
 
             if (LocationOfTaskBar == TaskBarLocation.Bottom || LocationOfTaskBar == TaskBarLocation.Right)
                 MoveWindow(Handle, 0, 0, w, h, true);

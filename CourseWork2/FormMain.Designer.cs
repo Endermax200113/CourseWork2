@@ -136,6 +136,7 @@ namespace CourseWork2
 			this.btnMinimaze.Size = new System.Drawing.Size(25, 25);
 			this.btnMinimaze.TabIndex = 2;
 			this.btnMinimaze.UseVisualStyleBackColor = true;
+			this.btnMinimaze.Click += new System.EventHandler(this.BtnMinimaze_OnClick);
 			this.btnMinimaze.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMinimaze_OnPaint);
 			this.btnMinimaze.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMinimaze_OnMouseDown);
 			this.btnMinimaze.MouseEnter += new System.EventHandler(this.BtnMinimaze_OnMouseEnter);
