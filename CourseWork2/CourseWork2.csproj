@@ -157,6 +157,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Properties\menu-game.png" />
+    <Content Include="Properties\menu-main.png" />
+    <Content Include="Properties\menu-server.png" />
+    <Content Include="Properties\menu-settings.png" />
+    <Content Include="Properties\menu-work.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -49,10 +49,19 @@ namespace CourseWork2
 			this.pnlBorderBottomRight = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBorderLeft2 = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBorderRight2 = new CourseWork2.UI.Controls.FlatPanel();
+			this.pnlBasic = new CourseWork2.UI.Controls.FlatPanel();
+			this.pnlMenu = new CourseWork2.UI.Controls.FlatPanel();
+			this.btnMenuMain = new CourseWork2.UI.Controls.FlatButton();
+			this.btnMenuWork = new CourseWork2.UI.Controls.FlatButton();
+			this.btnMenuGame = new CourseWork2.UI.Controls.FlatButton();
+			this.btnMenuServer = new CourseWork2.UI.Controls.FlatButton();
+			this.btnMenuSettings = new CourseWork2.UI.Controls.FlatButton();
 			this.pnlMain.SuspendLayout();
 			this.pnlHeaderForm.SuspendLayout();
 			this.pnlTitle.SuspendLayout();
 			this.pnlControl.SuspendLayout();
+			this.pnlBasic.SuspendLayout();
+			this.pnlMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// pnlMain
@@ -61,6 +70,7 @@ namespace CourseWork2
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
+			this.pnlMain.Controls.Add(this.pnlBasic);
 			this.pnlMain.Controls.Add(this.pnlHeaderForm);
 			this.pnlMain.Location = new System.Drawing.Point(5, 5);
 			this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
@@ -255,7 +265,7 @@ namespace CourseWork2
 			// pnlBorderBottomLeft
 			// 
 			this.pnlBorderBottomLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.pnlBorderBottomLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.pnlBorderBottomLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.pnlBorderBottomLeft.Cursor = System.Windows.Forms.Cursors.SizeNESW;
 			this.pnlBorderBottomLeft.Location = new System.Drawing.Point(0, 455);
 			this.pnlBorderBottomLeft.Margin = new System.Windows.Forms.Padding(0);
@@ -270,7 +280,7 @@ namespace CourseWork2
 			// 
 			this.pnlBorderBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlBorderBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.pnlBorderBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.pnlBorderBottom.Cursor = System.Windows.Forms.Cursors.SizeNS;
 			this.pnlBorderBottom.Location = new System.Drawing.Point(5, 455);
 			this.pnlBorderBottom.Margin = new System.Windows.Forms.Padding(0);
@@ -299,7 +309,7 @@ namespace CourseWork2
 			// 
 			this.pnlBorderLeft2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.pnlBorderLeft2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.pnlBorderLeft2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
 			this.pnlBorderLeft2.Cursor = System.Windows.Forms.Cursors.SizeWE;
 			this.pnlBorderLeft2.Location = new System.Drawing.Point(0, 30);
 			this.pnlBorderLeft2.Margin = new System.Windows.Forms.Padding(0);
@@ -324,6 +334,129 @@ namespace CourseWork2
 			this.pnlBorderRight2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseDown);
 			this.pnlBorderRight2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseMove);
 			this.pnlBorderRight2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBorderRight_OnMouseUp);
+			// 
+			// pnlBasic
+			// 
+			this.pnlBasic.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlBasic.Controls.Add(this.pnlMenu);
+			this.pnlBasic.Location = new System.Drawing.Point(0, 25);
+			this.pnlBasic.Margin = new System.Windows.Forms.Padding(0);
+			this.pnlBasic.Name = "pnlBasic";
+			this.pnlBasic.Size = new System.Drawing.Size(800, 425);
+			this.pnlBasic.TabIndex = 1;
+			// 
+			// pnlMenu
+			// 
+			this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.pnlMenu.Controls.Add(this.btnMenuSettings);
+			this.pnlMenu.Controls.Add(this.btnMenuServer);
+			this.pnlMenu.Controls.Add(this.btnMenuGame);
+			this.pnlMenu.Controls.Add(this.btnMenuWork);
+			this.pnlMenu.Controls.Add(this.btnMenuMain);
+			this.pnlMenu.Location = new System.Drawing.Point(0, 0);
+			this.pnlMenu.Margin = new System.Windows.Forms.Padding(0);
+			this.pnlMenu.Name = "pnlMenu";
+			this.pnlMenu.Size = new System.Drawing.Size(250, 425);
+			this.pnlMenu.TabIndex = 0;
+			// 
+			// btnMenuMain
+			// 
+			this.btnMenuMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuMain.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnMenuMain.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuMain.FlatAppearance.BorderSize = 0;
+			this.btnMenuMain.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuMain.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMenuMain.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnMenuMain.ForeColor = System.Drawing.Color.White;
+			this.btnMenuMain.Location = new System.Drawing.Point(0, 0);
+			this.btnMenuMain.Margin = new System.Windows.Forms.Padding(0);
+			this.btnMenuMain.Name = "btnMenuMain";
+			this.btnMenuMain.Size = new System.Drawing.Size(250, 40);
+			this.btnMenuMain.TabIndex = 0;
+			this.btnMenuMain.Text = "Главная";
+			this.btnMenuMain.UseVisualStyleBackColor = false;
+			// 
+			// btnMenuWork
+			// 
+			this.btnMenuWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuWork.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnMenuWork.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuWork.FlatAppearance.BorderSize = 0;
+			this.btnMenuWork.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuWork.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMenuWork.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnMenuWork.ForeColor = System.Drawing.Color.White;
+			this.btnMenuWork.Location = new System.Drawing.Point(0, 40);
+			this.btnMenuWork.Margin = new System.Windows.Forms.Padding(0);
+			this.btnMenuWork.Name = "btnMenuWork";
+			this.btnMenuWork.Size = new System.Drawing.Size(250, 40);
+			this.btnMenuWork.TabIndex = 1;
+			this.btnMenuWork.Text = "Для работы";
+			this.btnMenuWork.UseVisualStyleBackColor = false;
+			// 
+			// btnMenuGame
+			// 
+			this.btnMenuGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuGame.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnMenuGame.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuGame.FlatAppearance.BorderSize = 0;
+			this.btnMenuGame.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuGame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMenuGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnMenuGame.ForeColor = System.Drawing.Color.White;
+			this.btnMenuGame.Location = new System.Drawing.Point(0, 80);
+			this.btnMenuGame.Margin = new System.Windows.Forms.Padding(0);
+			this.btnMenuGame.Name = "btnMenuGame";
+			this.btnMenuGame.Size = new System.Drawing.Size(250, 40);
+			this.btnMenuGame.TabIndex = 2;
+			this.btnMenuGame.Text = "Для игр";
+			this.btnMenuGame.UseVisualStyleBackColor = false;
+			// 
+			// btnMenuServer
+			// 
+			this.btnMenuServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuServer.Dock = System.Windows.Forms.DockStyle.Top;
+			this.btnMenuServer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuServer.FlatAppearance.BorderSize = 0;
+			this.btnMenuServer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuServer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMenuServer.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnMenuServer.ForeColor = System.Drawing.Color.White;
+			this.btnMenuServer.Location = new System.Drawing.Point(0, 120);
+			this.btnMenuServer.Margin = new System.Windows.Forms.Padding(0);
+			this.btnMenuServer.Name = "btnMenuServer";
+			this.btnMenuServer.Size = new System.Drawing.Size(250, 40);
+			this.btnMenuServer.TabIndex = 3;
+			this.btnMenuServer.Text = "Для сервера";
+			this.btnMenuServer.UseVisualStyleBackColor = false;
+			// 
+			// btnMenuSettings
+			// 
+			this.btnMenuSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.btnMenuSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuSettings.FlatAppearance.BorderSize = 0;
+			this.btnMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnMenuSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMenuSettings.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnMenuSettings.ForeColor = System.Drawing.Color.White;
+			this.btnMenuSettings.Location = new System.Drawing.Point(0, 385);
+			this.btnMenuSettings.Margin = new System.Windows.Forms.Padding(0);
+			this.btnMenuSettings.Name = "btnMenuSettings";
+			this.btnMenuSettings.Size = new System.Drawing.Size(250, 40);
+			this.btnMenuSettings.TabIndex = 4;
+			this.btnMenuSettings.Text = "Настройки";
+			this.btnMenuSettings.UseVisualStyleBackColor = false;
 			// 
 			// FormMain
 			// 
@@ -353,6 +486,8 @@ namespace CourseWork2
 			this.pnlHeaderForm.ResumeLayout(false);
 			this.pnlTitle.ResumeLayout(false);
 			this.pnlControl.ResumeLayout(false);
+			this.pnlBasic.ResumeLayout(false);
+			this.pnlMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -377,5 +512,12 @@ namespace CourseWork2
         private FlatPanel pnlBorderBottomRight;
         private FlatPanel pnlBorderLeft2;
         private FlatPanel pnlBorderRight2;
-    }
+		private FlatPanel pnlBasic;
+		private FlatPanel pnlMenu;
+		private FlatButton btnMenuMain;
+		private FlatButton btnMenuWork;
+		private FlatButton btnMenuGame;
+		private FlatButton btnMenuSettings;
+		private FlatButton btnMenuServer;
+	}
 }
