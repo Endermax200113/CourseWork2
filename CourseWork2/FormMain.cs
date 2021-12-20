@@ -668,11 +668,6 @@ namespace CourseWork2
 
             _formMaximazed = false;
 		}
-
-        private void Somehere()
-		{
-
-		}
 		#endregion
 	}
 }
