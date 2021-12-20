@@ -317,6 +317,11 @@ namespace CourseWork2.UI.Forms
                 return sb.ToString();
             }
         }
+        
+        private void Somewhere()
+		{
+
+		}
         #endregion
     }
 }
