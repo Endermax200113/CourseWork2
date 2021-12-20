@@ -11,8 +11,7 @@ namespace CourseWork2.UI.Controls
     {
         public FlatLabel()
         {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor
-                | ControlStyles.UserPaint, true);
+            //Удалённый код
             DoubleBuffered = true;
             ResizeRedraw = true;
         }

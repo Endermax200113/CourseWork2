@@ -13,8 +13,8 @@ namespace CourseWork2.UI.Controls
         {
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor
                 | ControlStyles.UserPaint, true);
-            DoubleBuffered = true;
-            ResizeRedraw = true;
+            /*DoubleBuffered = true;
+            ResizeRedraw = true;*/
         }
     }
 }
