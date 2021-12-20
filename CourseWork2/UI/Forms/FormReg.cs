@@ -320,7 +320,7 @@ namespace CourseWork2.UI.Forms
 
         private void Tester()
 		{
-            Console.WriteLine("Bye bye world");
+            Console.WriteLine("Hello world");
 		}
         #endregion
     }
