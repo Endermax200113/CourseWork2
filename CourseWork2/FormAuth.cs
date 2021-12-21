@@ -20,7 +20,6 @@ namespace CourseWork2
         private bool _isFormLogin = true;
         private StringFormat _sf = new StringFormat();
         private Form _activeForm;
-        public static Form SelfForm { get; set; }
         #endregion
 
         #region -> Кнопки
@@ -46,6 +45,12 @@ namespace CourseWork2
         #region -[Полоса авторизации]-
         private Animation _animStrip = new Animation();
         #endregion
+        #endregion
+        #endregion
+
+        #region [Свойства]
+        #region -> Окно
+        public static Form SelfForm { get; set; }
         #endregion
         #endregion
 

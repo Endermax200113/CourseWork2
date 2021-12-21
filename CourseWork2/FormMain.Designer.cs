@@ -643,6 +643,7 @@ namespace CourseWork2
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FormMain";
 			this.Load += new System.EventHandler(this.FormMain_OnLoad);
+			this.Shown += new System.EventHandler(this.FormMain_OnShown);
 			this.pnlMain.ResumeLayout(false);
 			this.pnlBasic.ResumeLayout(false);
 			this.pnlMenu.ResumeLayout(false);

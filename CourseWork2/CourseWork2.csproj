@@ -203,11 +203,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Properties\img-game.jpg" />
+    <Content Include="Properties\img-server.jpeg" />
+    <Content Include="Properties\img-work.png" />
     <Content Include="Properties\menu-game.png" />
     <Content Include="Properties\menu-main.png" />
     <Content Include="Properties\menu-server.png" />
     <Content Include="Properties\menu-settings.png" />
     <Content Include="Properties\menu-work.png" />
+    <None Include="Resources\img-work.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

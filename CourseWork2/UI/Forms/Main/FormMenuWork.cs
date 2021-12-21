@@ -12,9 +12,13 @@ namespace CourseWork2.UI.Forms.Main
 {
 	public partial class FormMenuWork : Form
 	{
-		public FormMenuWork()
+		private FormMain _formParent;
+
+		public FormMenuWork(FormMain form)
 		{
 			InitializeComponent();
+
+			_formParent = form;
 		}
 	}
 }
