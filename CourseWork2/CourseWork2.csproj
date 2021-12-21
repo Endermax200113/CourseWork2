@@ -109,6 +109,36 @@
     <Compile Include="UI\Controls\ShadowForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuGame.Designer.cs">
+      <DependentUpon>FormMenuGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuMain.Designer.cs">
+      <DependentUpon>FormMenuMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuServer.Designer.cs">
+      <DependentUpon>FormMenuServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuSettings.Designer.cs">
+      <DependentUpon>FormMenuSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\Main\FormMenuWork.Designer.cs">
+      <DependentUpon>FormMenuWork.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormAuth.resx">
       <DependentUpon>FormAuth.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +160,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FormReg.resx">
       <DependentUpon>FormReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\Main\FormMenuGame.resx">
+      <DependentUpon>FormMenuGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\Main\FormMenuMain.resx">
+      <DependentUpon>FormMenuMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\Main\FormMenuServer.resx">
+      <DependentUpon>FormMenuServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\Main\FormMenuSettings.resx">
+      <DependentUpon>FormMenuSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\Main\FormMenuWork.resx">
+      <DependentUpon>FormMenuWork.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Montserrat-Regular.ttf" />
     <None Include="Properties\Settings.settings">

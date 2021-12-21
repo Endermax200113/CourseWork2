@@ -317,11 +317,6 @@ namespace CourseWork2.UI.Forms
                 return sb.ToString();
             }
         }
-
-        private void Tester()
-		{
-            Console.WriteLine("Bye bye world");
-		}
         #endregion
     }
 }

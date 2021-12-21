@@ -45,6 +45,7 @@ namespace CourseWork2
 			this.pnlBorderTopLeft = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlMain = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBasic = new CourseWork2.UI.Controls.FlatPanel();
+			this.pnlForm = new System.Windows.Forms.Panel();
 			this.pnlMenu = new CourseWork2.UI.Controls.FlatPanel();
 			this.btnMenuSettings = new CourseWork2.UI.Controls.FlatButton();
 			this.btnMenuServer = new CourseWork2.UI.Controls.FlatButton();
@@ -62,7 +63,6 @@ namespace CourseWork2
 			this.pnlBorderLeft5 = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBorderLeft6 = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBorderLeft7 = new CourseWork2.UI.Controls.FlatPanel();
-			this.pnlForm = new System.Windows.Forms.Panel();
 			this.pnlMain.SuspendLayout();
 			this.pnlBasic.SuspendLayout();
 			this.pnlMenu.SuspendLayout();
@@ -271,6 +271,17 @@ namespace CourseWork2
 			this.pnlBasic.Size = new System.Drawing.Size(800, 425);
 			this.pnlBasic.TabIndex = 1;
 			// 
+			// pnlForm
+			// 
+			this.pnlForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.pnlForm.Location = new System.Drawing.Point(250, 0);
+			this.pnlForm.Margin = new System.Windows.Forms.Padding(0);
+			this.pnlForm.Name = "pnlForm";
+			this.pnlForm.Size = new System.Drawing.Size(550, 425);
+			this.pnlForm.TabIndex = 1;
+			// 
 			// pnlMenu
 			// 
 			this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -309,6 +320,7 @@ namespace CourseWork2
 			this.btnMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnMenuSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnMenuSettings.UseVisualStyleBackColor = false;
+			this.btnMenuSettings.Click += new System.EventHandler(this.BtnMenuSettings_OnClick);
 			this.btnMenuSettings.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMenuSettings_OnPaint);
 			this.btnMenuSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMenuSettings_OnMouseDown);
 			this.btnMenuSettings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMenuSettings_OnMouseUp);
@@ -335,6 +347,7 @@ namespace CourseWork2
 			this.btnMenuServer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnMenuServer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnMenuServer.UseVisualStyleBackColor = false;
+			this.btnMenuServer.Click += new System.EventHandler(this.BtnMenuServer_OnClick);
 			this.btnMenuServer.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMenuServer_OnPaint);
 			this.btnMenuServer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMenuServer_OnMouseDown);
 			this.btnMenuServer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMenuServer_OnMouseUp);
@@ -361,6 +374,7 @@ namespace CourseWork2
 			this.btnMenuGame.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnMenuGame.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnMenuGame.UseVisualStyleBackColor = false;
+			this.btnMenuGame.Click += new System.EventHandler(this.BtnMenuGame_OnClick);
 			this.btnMenuGame.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMenuGame_OnPaint);
 			this.btnMenuGame.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMenuGame_OnMouseDown);
 			this.btnMenuGame.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMenuGame_OnMouseUp);
@@ -387,6 +401,7 @@ namespace CourseWork2
 			this.btnMenuWork.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnMenuWork.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnMenuWork.UseVisualStyleBackColor = false;
+			this.btnMenuWork.Click += new System.EventHandler(this.BtnMenuWork_OnClick);
 			this.btnMenuWork.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMenuWork_OnPaint);
 			this.btnMenuWork.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMenuWork_OnMouseDown);
 			this.btnMenuWork.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMenuWork_OnMouseUp);
@@ -414,6 +429,7 @@ namespace CourseWork2
 			this.btnMenuMain.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.btnMenuMain.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.btnMenuMain.UseVisualStyleBackColor = false;
+			this.btnMenuMain.Click += new System.EventHandler(this.BtnMenuMain_OnClick);
 			this.btnMenuMain.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMenuMain_OnPaint);
 			this.btnMenuMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMenuMain_OnMouseDown);
 			this.btnMenuMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMenuMain_OnMouseUp);
@@ -595,17 +611,6 @@ namespace CourseWork2
 			this.pnlBorderLeft7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseDown);
 			this.pnlBorderLeft7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseMove);
 			this.pnlBorderLeft7.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBoderLeft_OnMouseUp);
-			// 
-			// pnlForm
-			// 
-			this.pnlForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.pnlForm.Location = new System.Drawing.Point(250, 0);
-			this.pnlForm.Margin = new System.Windows.Forms.Padding(0);
-			this.pnlForm.Name = "pnlForm";
-			this.pnlForm.Size = new System.Drawing.Size(550, 425);
-			this.pnlForm.TabIndex = 1;
 			// 
 			// FormMain
 			// 

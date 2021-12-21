@@ -1,5 +1,6 @@
 ﻿using CourseWork2.Properties;
 using CourseWork2.UI;
+using CourseWork2.UI.Forms.Main;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace CourseWork2
         #region [Переменные]
         #region -> Общие
         private bool _mousePressed = false;
-        private Form _activeForm;
+        private Form _activeForm = new FormMenuMain();
         private TypeForm _typeForm = TypeForm.Main;
         private StringFormat _sfMenu = new StringFormat();
         private PrivateFontCollection _pfc = new PrivateFontCollection();
@@ -418,6 +419,12 @@ namespace CourseWork2
             if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Main)
                 OffButtonAnimate(_typeForm);
         }
+
+        private void BtnMenuMain_OnClick(object sender, EventArgs e)
+		{
+            if (_typeForm == TypeForm.Main)
+                OpenChildForm(new FormMenuMain());
+		}
         #endregion
 
         #region -[Для работы]-
@@ -500,6 +507,12 @@ namespace CourseWork2
 		{
             if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Work)
                 OffButtonAnimate(_typeForm);
+        }
+
+        private void BtnMenuWork_OnClick(object sender, EventArgs e)
+        {
+            if (_typeForm == TypeForm.Work)
+                OpenChildForm(new FormMenuWork());
         }
         #endregion
 
@@ -584,6 +597,12 @@ namespace CourseWork2
             if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Game)
                 OffButtonAnimate(_typeForm);
         }
+
+        private void BtnMenuGame_OnClick(object senderm, EventArgs e)
+        {
+            if (_typeForm == TypeForm.Game)
+                OpenChildForm(new FormMenuGame());
+        }
         #endregion
 
         #region -[Для сервера]-
@@ -667,6 +686,12 @@ namespace CourseWork2
             if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Server)
                 OffButtonAnimate(_typeForm);
         }
+
+        private void BtnMenuServer_OnClick(object sender, EventArgs e)
+        {
+            if (_typeForm == TypeForm.Server)
+                OpenChildForm(new FormMenuServer());
+        }
         #endregion
 
         #region -[Настройки]-
@@ -749,6 +774,12 @@ namespace CourseWork2
 		{
             if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Settings)
                 OffButtonAnimate(_typeForm);
+        }
+
+        private void BtnMenuSettings_OnClick(object sender, EventArgs e)
+        {
+            if (_typeForm == TypeForm.Settings)
+                OpenChildForm(new FormMenuSettings());
         }
         #endregion
         #endregion
@@ -1470,10 +1501,20 @@ namespace CourseWork2
             }
         }
 
-        private void OpenChildForm(Form form)
+        private void OpenChildForm(Form childForm)
 		{
+            if (_activeForm != null)
+                _activeForm.Close();
 
-		}
+            _activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pnlForm.Controls.Add(childForm);
+            pnlForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
 		#endregion
 	}
 }
