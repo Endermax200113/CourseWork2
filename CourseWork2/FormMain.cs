@@ -1,11 +1,15 @@
-﻿using CourseWork2.UI;
+﻿using CourseWork2.Properties;
+using CourseWork2.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +22,10 @@ namespace CourseWork2
         #region [Переменные]
         #region -> Общие
         private bool _mousePressed = false;
+        private Form _activeForm;
+        private TypeForm _typeForm = TypeForm.Main;
+        private StringFormat _sfMenu = new StringFormat();
+        private PrivateFontCollection _pfc = new PrivateFontCollection();
         #endregion
 
         #region -> Кнопки
@@ -41,6 +49,31 @@ namespace CourseWork2
         private Animation _animBtnMinimazeG = new Animation();
         private Animation _animBtnMinimazeB = new Animation();
         #endregion
+
+        #region -[Главная]-
+        private Point _clLocationMain = new Point();
+        private Animation _animWavePressMain = new Animation();
+        #endregion
+
+        #region -[Для работы]-
+        private Point _clLocationWork = new Point();
+        private Animation _animWavePressWork = new Animation();
+        #endregion
+
+        #region -[Для игр]-
+        private Point _clLocationGame = new Point();
+        private Animation _animWavePressGame = new Animation();
+        #endregion
+
+        #region -[Для сервера]-
+        private Point _clLocationServer = new Point();
+        private Animation _animWavePressServer = new Animation();
+        #endregion
+
+        #region -[Настройки]-
+        private Point _clLocationSettings = new Point();
+        private Animation _animWavePressSettings = new Animation();
+        #endregion
         #endregion
 
         #region -> Окно
@@ -50,6 +83,11 @@ namespace CourseWork2
         private bool _formMaximazed = false;
         #endregion
         #endregion
+
+        private enum TypeForm
+		{
+            Main, Work, Game, Server, Settings
+		}
 
         public FormMain()
         {
@@ -70,12 +108,39 @@ namespace CourseWork2
             _animBtnMinimazeR.Value = 26;
             _animBtnMinimazeG.Value = 28;
             _animBtnMinimazeB.Value = 41;
+
+            _sfMenu.Alignment = StringAlignment.Near;
+            _sfMenu.LineAlignment = StringAlignment.Center;
         }
 
-        #region [Слушатели]
-        #region -> Кнопки
-        #region -[Закрыть окно]-
-        private void BtnClose_OnPaint(object sender, PaintEventArgs e)
+		#region [Слушатели]
+		#region -> Окно
+        private void FormMain_OnLoad(object sender, EventArgs e)
+		{
+            using (MemoryStream fontStream = new MemoryStream(Resources.Montserrat_Regular))
+            {
+                IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
+                byte[] fontData = new byte[fontStream.Length];
+
+                fontStream.Read(fontData, 0, (int)fontStream.Length);
+                Marshal.Copy(fontData, 0, data, (int)fontStream.Length);
+                _pfc.AddMemoryFont(data, (int)fontStream.Length);
+                fontStream.Close();
+                Marshal.FreeCoTaskMem(data);
+            }
+
+            lblTitle.Font = new Font(_pfc.Families[0], 10);
+            btnMenuMain.Font = new Font(_pfc.Families[0], 12);
+            btnMenuWork.Font = new Font(_pfc.Families[0], 12);
+            btnMenuGame.Font = new Font(_pfc.Families[0], 12);
+            btnMenuServer.Font = new Font(_pfc.Families[0], 12);
+            btnMenuSettings.Font = new Font(_pfc.Families[0], 12);
+        }
+		#endregion
+
+		#region -> Кнопки
+		#region -[Закрыть окно]-
+		private void BtnClose_OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.SmoothingMode = SmoothingMode.HighQuality;
@@ -270,6 +335,421 @@ namespace CourseWork2
 		{
             WindowState = FormWindowState.Minimized;
 		}
+		#endregion
+
+		#region -[Главная]-
+        private void BtnMenuMain_OnPaint(object sender, PaintEventArgs e)
+		{
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Main)
+			{
+                rectWave = new Rectangle(
+                   _clLocationMain.X - (int)_animWavePressMain.Value / 2,
+                   _clLocationMain.Y - (int)_animWavePressMain.Value / 2,
+                   (int)_animWavePressMain.Value,
+                   (int)_animWavePressMain.Value
+               );
+			}
+            else
+			{
+                rectWave = new Rectangle(
+                    btnMenuMain.Width / 2 - (int)_animWavePressMain.Value / 2,
+                    btnMenuMain.Height / 2 - (int)_animWavePressMain.Value / 2,
+                    (int)_animWavePressMain.Value,
+                    (int)_animWavePressMain.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuMain.Width, btnMenuMain.Height);
+
+            if (_typeForm == TypeForm.Main)
+			{
+                if (_animWavePressMain.Value > 0 && _animWavePressMain.Value < _animWavePressMain.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressMain.Value == _animWavePressMain.TargetValue)
+                {
+                    _animWavePressMain.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+			{
+                if (_animWavePressMain.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressMain.Value == _animWavePressMain.TargetValue)
+                    _animWavePressMain.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+
+            Rectangle rectImg = new Rectangle(8, 6, 24, 24);
+            Rectangle rectText = new Rectangle(36, 0, btnMenuMain.Width - 36, btnMenuMain.Height);
+
+            g.DrawImage(btnMenuMain.Image, rectImg);
+            g.DrawString(btnMenuMain.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
+        }
+
+        private void BtnMenuMain_OnMouseDown(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm != TypeForm.Main)
+            {
+                _typeForm = TypeForm.Main;
+                _clLocationMain = e.Location;
+
+                _animWavePressMain = new Animation("btnMenuMainPress_" + btnMenuMain.Handle, Wave, 0, btnMenuMain.Width * 2);
+                Animator.Request(_animWavePressMain, true);
+
+                void Wave()
+				{
+                    btnMenuMain.Invalidate();
+                    pnlBorderLeft2.Invalidate();
+                }
+            }
+        }
+
+        private void BtnMenuMain_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Main)
+                OffButtonAnimate(_typeForm);
+        }
+        #endregion
+
+        #region -[Для работы]-
+        private void BtnMenuWork_OnPaint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Work)
+            {
+                rectWave = new Rectangle(
+                   _clLocationWork.X - (int)_animWavePressWork.Value / 2,
+                   _clLocationWork.Y - (int)_animWavePressWork.Value / 2,
+                   (int)_animWavePressWork.Value,
+                   (int)_animWavePressWork.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuWork.Width / 2 - (int)_animWavePressWork.Value / 2,
+                    btnMenuWork.Height / 2 - (int)_animWavePressWork.Value / 2,
+                    (int)_animWavePressWork.Value,
+                    (int)_animWavePressWork.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuWork.Width, btnMenuWork.Height);
+
+            if (_typeForm == TypeForm.Work)
+            {
+                if (_animWavePressWork.Value > 0 && _animWavePressWork.Value < _animWavePressWork.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressWork.Value == _animWavePressWork.TargetValue)
+                {
+                    _animWavePressWork.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressWork.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressWork.Value == _animWavePressWork.TargetValue)
+                    _animWavePressWork.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+
+            Rectangle rectImg = new Rectangle(8, 6, 24, 24);
+            Rectangle rectText = new Rectangle(36, 0, btnMenuWork.Width - 36, btnMenuWork.Height);
+
+            g.DrawImage(btnMenuWork.Image, rectImg);
+            g.DrawString(btnMenuWork.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
+        }
+
+        private void BtnMenuWork_OnMouseDown(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm != TypeForm.Work)
+            {
+                _typeForm = TypeForm.Work;
+                _clLocationWork = e.Location;
+
+                _animWavePressWork = new Animation("btnMenuWorkPress_" + btnMenuWork.Handle, Wave, 0, btnMenuWork.Width * 2);
+                Animator.Request(_animWavePressWork, true);
+
+                void Wave()
+                {
+                    btnMenuWork.Invalidate();
+                    pnlBorderLeft3.Invalidate();
+                }
+            }
+        }
+
+        private void BtnMenuWork_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Work)
+                OffButtonAnimate(_typeForm);
+        }
+        #endregion
+
+        #region -[Для игр]-
+        private void BtnMenuGame_OnPaint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Game)
+            {
+                rectWave = new Rectangle(
+                   _clLocationGame.X - (int)_animWavePressGame.Value / 2,
+                   _clLocationGame.Y - (int)_animWavePressGame.Value / 2,
+                   (int)_animWavePressGame.Value,
+                   (int)_animWavePressGame.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuGame.Width / 2 - (int)_animWavePressGame.Value / 2,
+                    btnMenuGame.Height / 2 - (int)_animWavePressGame.Value / 2,
+                    (int)_animWavePressGame.Value,
+                    (int)_animWavePressGame.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuGame.Width, btnMenuGame.Height);
+
+            if (_typeForm == TypeForm.Game)
+            {
+                if (_animWavePressGame.Value > 0 && _animWavePressGame.Value < _animWavePressGame.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressGame.Value == _animWavePressGame.TargetValue)
+                {
+                    _animWavePressGame.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressGame.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressGame.Value == _animWavePressGame.TargetValue)
+                    _animWavePressGame.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+
+            Rectangle rectImg = new Rectangle(8, 6, 24, 24);
+            Rectangle rectText = new Rectangle(36, 0, btnMenuGame.Width - 36, btnMenuGame.Height);
+
+            g.DrawImage(btnMenuGame.Image, rectImg);
+            g.DrawString(btnMenuGame.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
+        }
+
+        private void BtnMenuGame_OnMouseDown(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm != TypeForm.Game)
+            {
+                _typeForm = TypeForm.Game;
+                _clLocationGame = e.Location;
+
+                _animWavePressGame = new Animation("btnMenuGamePress_" + btnMenuGame.Handle, Wave, 0, btnMenuGame.Width * 2);
+                Animator.Request(_animWavePressGame, true);
+
+                void Wave()
+                {
+                    btnMenuGame.Invalidate();
+                    pnlBorderLeft4.Invalidate();
+                }
+            }
+        }
+
+        private void BtnMenuGame_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Game)
+                OffButtonAnimate(_typeForm);
+        }
+        #endregion
+
+        #region -[Для сервера]-
+        private void BtnMenuServer_OnPaint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Server)
+            {
+                rectWave = new Rectangle(
+                   _clLocationServer.X - (int)_animWavePressServer.Value / 2,
+                   _clLocationServer.Y - (int)_animWavePressServer.Value / 2,
+                   (int)_animWavePressServer.Value,
+                   (int)_animWavePressServer.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuServer.Width / 2 - (int)_animWavePressServer.Value / 2,
+                    btnMenuServer.Height / 2 - (int)_animWavePressServer.Value / 2,
+                    (int)_animWavePressServer.Value,
+                    (int)_animWavePressServer.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuServer.Width, btnMenuServer.Height);
+
+            if (_typeForm == TypeForm.Server)
+            {
+                if (_animWavePressServer.Value > 0 && _animWavePressServer.Value < _animWavePressServer.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressServer.Value == _animWavePressServer.TargetValue)
+                {
+                    _animWavePressServer.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressServer.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressServer.Value == _animWavePressServer.TargetValue)
+                    _animWavePressServer.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+
+            Rectangle rectImg = new Rectangle(8, 6, 24, 24);
+            Rectangle rectText = new Rectangle(36, 0, btnMenuServer.Width - 36, btnMenuServer.Height);
+
+            g.DrawImage(btnMenuServer.Image, rectImg);
+            g.DrawString(btnMenuServer.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
+        }
+
+        private void BtnMenuServer_OnMouseDown(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm != TypeForm.Server)
+            {
+                _typeForm = TypeForm.Server;
+                _clLocationServer = e.Location;
+
+                _animWavePressServer = new Animation("btnMenuServerPress_" + btnMenuServer.Handle, Wave, 0, btnMenuServer.Width * 2);
+                Animator.Request(_animWavePressServer, true);
+
+                void Wave()
+                {
+                    btnMenuServer.Invalidate();
+                    pnlBorderLeft5.Invalidate();
+                }
+            }
+        }
+
+        private void BtnMenuServer_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Server)
+                OffButtonAnimate(_typeForm);
+        }
+        #endregion
+
+        #region -[Настройки]-
+        private void BtnMenuSettings_OnPaint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Settings)
+            {
+                rectWave = new Rectangle(
+                   _clLocationSettings.X - (int)_animWavePressSettings.Value / 2,
+                   _clLocationSettings.Y - (int)_animWavePressSettings.Value / 2,
+                   (int)_animWavePressSettings.Value,
+                   (int)_animWavePressSettings.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuSettings.Width / 2 - (int)_animWavePressSettings.Value / 2,
+                    btnMenuSettings.Height / 2 - (int)_animWavePressSettings.Value / 2,
+                    (int)_animWavePressSettings.Value,
+                    (int)_animWavePressSettings.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuSettings.Width, btnMenuSettings.Height);
+
+            if (_typeForm == TypeForm.Settings)
+            {
+                if (_animWavePressSettings.Value > 0 && _animWavePressSettings.Value < _animWavePressSettings.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
+                {
+                    _animWavePressSettings.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressSettings.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
+                    _animWavePressSettings.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+
+            Rectangle rectImg = new Rectangle(8, 6, 24, 24);
+            Rectangle rectText = new Rectangle(36, 0, btnMenuSettings.Width - 36, btnMenuSettings.Height);
+
+            g.DrawImage(btnMenuSettings.Image, rectImg);
+            g.DrawString(btnMenuSettings.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
+        }
+
+        private void BtnMenuSettings_OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && _typeForm != TypeForm.Settings)
+            {
+                _typeForm = TypeForm.Settings;
+                _clLocationSettings = e.Location;
+
+                _animWavePressSettings = new Animation("btnMenuSettingsPress_" + btnMenuSettings.Handle, Wave, 0, btnMenuSettings.Width * 2);
+                Animator.Request(_animWavePressSettings, true);
+
+                void Wave()
+                {
+                    btnMenuSettings.Invalidate();
+                    pnlBorderLeft6.Invalidate();
+                }
+            }
+        }
+
+        private void BtnMenuSettings_OnMouseUp(object sender, MouseEventArgs e)
+		{
+            if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Settings)
+                OffButtonAnimate(_typeForm);
+        }
         #endregion
         #endregion
 
@@ -608,12 +1088,267 @@ namespace CourseWork2
             if (e.Button == MouseButtons.Left)
                 _mousePressed = false;
         }
-		#endregion
-		#endregion
-		#endregion
-		#endregion
 
-		#region [Методы]
+        private void PnlBorderLeft1_OnPaint(object sender, PaintEventArgs e)
+		{
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave = new Rectangle();
+
+            if (_typeForm == TypeForm.Main)
+            {
+                rectWave = new Rectangle(
+                   _clLocationMain.X - (int)_animWavePressMain.Value / 2,
+                   _clLocationMain.Y - (int)_animWavePressMain.Value / 2,
+                   (int)_animWavePressMain.Value,
+                   (int)_animWavePressMain.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuMain.Width / 2 - (int)_animWavePressMain.Value / 2,
+                    btnMenuMain.Height / 2 - (int)_animWavePressMain.Value / 2,
+                    (int)_animWavePressMain.Value,
+                    (int)_animWavePressMain.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuMain.Width, btnMenuMain.Height);
+
+            if (_typeForm == TypeForm.Main)
+            {
+                if (_animWavePressMain.Value > 0 && _animWavePressMain.Value < _animWavePressMain.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressMain.Value == _animWavePressMain.TargetValue)
+                {
+                    _animWavePressMain.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressMain.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressMain.Value == _animWavePressMain.TargetValue)
+                    _animWavePressMain.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+        }
+
+        private void PnlBorderLeft2_OnPaint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Work)
+            {
+                rectWave = new Rectangle(
+                   _clLocationWork.X - (int)_animWavePressWork.Value / 2,
+                   _clLocationWork.Y - (int)_animWavePressWork.Value / 2,
+                   (int)_animWavePressWork.Value,
+                   (int)_animWavePressWork.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuWork.Width / 2 - (int)_animWavePressWork.Value / 2,
+                    btnMenuWork.Height / 2 - (int)_animWavePressWork.Value / 2,
+                    (int)_animWavePressWork.Value,
+                    (int)_animWavePressWork.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuWork.Width, btnMenuWork.Height);
+
+            if (_typeForm == TypeForm.Work)
+            {
+                if (_animWavePressWork.Value > 0 && _animWavePressWork.Value < _animWavePressWork.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressWork.Value == _animWavePressWork.TargetValue)
+                {
+                    _animWavePressWork.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressWork.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressWork.Value == _animWavePressWork.TargetValue)
+                    _animWavePressWork.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+        }
+
+        private void PnlBorderLeft3_OnPaint(object sender, PaintEventArgs e)
+		{
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Game)
+            {
+                rectWave = new Rectangle(
+                   _clLocationGame.X - (int)_animWavePressGame.Value / 2,
+                   _clLocationGame.Y - (int)_animWavePressGame.Value / 2,
+                   (int)_animWavePressGame.Value,
+                   (int)_animWavePressGame.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuGame.Width / 2 - (int)_animWavePressGame.Value / 2,
+                    btnMenuGame.Height / 2 - (int)_animWavePressGame.Value / 2,
+                    (int)_animWavePressGame.Value,
+                    (int)_animWavePressGame.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuGame.Width, btnMenuGame.Height);
+
+            if (_typeForm == TypeForm.Game)
+            {
+                if (_animWavePressGame.Value > 0 && _animWavePressGame.Value < _animWavePressGame.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressGame.Value == _animWavePressGame.TargetValue)
+                {
+                    _animWavePressGame.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressGame.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressGame.Value == _animWavePressGame.TargetValue)
+                    _animWavePressGame.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+        }
+
+        private void PnlBorderLeft4_OnPaint(object sender, PaintEventArgs e)
+		{
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Server)
+            {
+                rectWave = new Rectangle(
+                   _clLocationServer.X - (int)_animWavePressServer.Value / 2,
+                   _clLocationServer.Y - (int)_animWavePressServer.Value / 2,
+                   (int)_animWavePressServer.Value,
+                   (int)_animWavePressServer.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuServer.Width / 2 - (int)_animWavePressServer.Value / 2,
+                    btnMenuServer.Height / 2 - (int)_animWavePressServer.Value / 2,
+                    (int)_animWavePressServer.Value,
+                    (int)_animWavePressServer.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuServer.Width, btnMenuServer.Height);
+
+            if (_typeForm == TypeForm.Server)
+            {
+                if (_animWavePressServer.Value > 0 && _animWavePressServer.Value < _animWavePressServer.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressServer.Value == _animWavePressServer.TargetValue)
+                {
+                    _animWavePressServer.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressServer.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressServer.Value == _animWavePressServer.TargetValue)
+                    _animWavePressServer.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+        }
+
+        private void PnlBorderLeft5_OnPaint(object sender, PaintEventArgs e)
+		{
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.Clear(Color.FromArgb(255, 32, 34, 50));
+
+            Rectangle rectWave;
+
+            if (_typeForm == TypeForm.Settings)
+            {
+                rectWave = new Rectangle(
+                   _clLocationSettings.X - (int)_animWavePressSettings.Value / 2,
+                   _clLocationSettings.Y - (int)_animWavePressSettings.Value / 2,
+                   (int)_animWavePressSettings.Value,
+                   (int)_animWavePressSettings.Value
+               );
+            }
+            else
+            {
+                rectWave = new Rectangle(
+                    btnMenuSettings.Width / 2 - (int)_animWavePressSettings.Value / 2,
+                    btnMenuSettings.Height / 2 - (int)_animWavePressSettings.Value / 2,
+                    (int)_animWavePressSettings.Value,
+                    (int)_animWavePressSettings.Value
+                );
+            }
+            Rectangle rect = new Rectangle(0, 0, btnMenuSettings.Width, btnMenuSettings.Height);
+
+            if (_typeForm == TypeForm.Settings)
+            {
+                if (_animWavePressSettings.Value > 0 && _animWavePressSettings.Value < _animWavePressSettings.TargetValue)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
+                {
+                    _animWavePressSettings.Value = -1;
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+                }
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
+            }
+            else
+            {
+                if (_animWavePressSettings.Value > 0)
+                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
+                    _animWavePressSettings.Value = 0;
+                else
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
+            }
+        }
+        #endregion
+        #endregion
+        #endregion
+        #endregion
+
+        #region [Методы]
         private void MakeChangesOfForm()
 		{
             foreach (Control ctrl in Controls)
@@ -644,6 +1379,7 @@ namespace CourseWork2
             pnlBorderRight2.Cursor = Cursors.Default;
             pnlBorderBottomRight.Cursor = Cursors.Default;
             pnlBorderBottom.Cursor = Cursors.Default;
+            pnlBorderBottom1.Cursor = Cursors.Default;
             pnlBorderBottomLeft.Cursor = Cursors.Default;
             pnlBorderLeft1.Cursor = Cursors.Default;
             pnlBorderLeft2.Cursor = Cursors.Default;
@@ -662,11 +1398,81 @@ namespace CourseWork2
             pnlBorderRight2.Cursor = Cursors.SizeWE;
             pnlBorderBottomRight.Cursor = Cursors.SizeNWSE;
             pnlBorderBottom.Cursor = Cursors.SizeNS;
+            pnlBorderBottom1.Cursor = Cursors.SizeNS;
             pnlBorderBottomLeft.Cursor = Cursors.SizeNESW;
             pnlBorderLeft1.Cursor = Cursors.SizeWE;
             pnlBorderLeft2.Cursor = Cursors.SizeWE;
 
             _formMaximazed = false;
+		}
+
+        private void OffButtonAnimate(TypeForm typeForm)
+		{
+            if (_animWavePressMain.Value != 0 && typeForm != TypeForm.Main)
+            {
+                _animWavePressMain = new Animation("btnMenuMainUp_" + btnMenuMain.Handle, Wave, btnMenuMain.Width * 2, 0);
+                Animator.Request(_animWavePressMain, true);
+                btnMenuMain.Invalidate();
+
+                void Wave()
+				{
+                    btnMenuMain.Invalidate();
+                    pnlBorderLeft2.Invalidate();
+                }
+            }
+            else if (_animWavePressWork.Value != 0 && typeForm != TypeForm.Work)
+			{
+                _animWavePressWork = new Animation("btnMenuWorkUp_" + btnMenuWork.Handle, Wave, btnMenuWork.Width * 2, 0);
+                Animator.Request(_animWavePressWork, true);
+                btnMenuWork.Invalidate();
+
+                void Wave()
+                {
+                    btnMenuWork.Invalidate();
+                    pnlBorderLeft3.Invalidate();
+                }
+            }
+            else if (_animWavePressGame.Value != 0 && typeForm != TypeForm.Game)
+			{
+                _animWavePressGame = new Animation("btnMenuGameUp_" + btnMenuGame.Handle, Wave, btnMenuGame.Width * 2, 0);
+                Animator.Request(_animWavePressGame, true);
+                btnMenuGame.Invalidate();
+
+                void Wave()
+                {
+                    btnMenuGame.Invalidate();
+                    pnlBorderLeft4.Invalidate();
+                }
+            }
+            else if (_animWavePressServer.Value != 0 && typeForm != TypeForm.Server)
+			{
+                _animWavePressServer = new Animation("btnMenuServerUp_" + btnMenuServer.Handle, Wave, btnMenuServer.Width * 2, 0);
+                Animator.Request(_animWavePressServer, true);
+                btnMenuServer.Invalidate();
+
+                void Wave()
+                {
+                    btnMenuServer.Invalidate();
+                    pnlBorderLeft5.Invalidate();
+                }
+            }
+            else if (_animWavePressSettings.Value != 0 && typeForm != TypeForm.Settings)
+			{
+                _animWavePressSettings = new Animation("btnMenuSettingsUp_" + btnMenuSettings.Handle, Wave, btnMenuSettings.Width * 2, 0);
+                Animator.Request(_animWavePressSettings, true);
+                btnMenuSettings.Invalidate();
+
+                void Wave()
+                {
+                    btnMenuSettings.Invalidate();
+                    pnlBorderLeft6.Invalidate();
+                }
+            }
+        }
+
+        private void OpenChildForm(Form form)
+		{
+
 		}
 		#endregion
 	}
