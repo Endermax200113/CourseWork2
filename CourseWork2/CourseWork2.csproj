@@ -67,6 +67,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Computer.cs" />
+    <Compile Include="Components\ComputerWork.cs" />
     <Compile Include="Database\DB.cs" />
     <Compile Include="FormAuth.cs">
       <SubType>Form</SubType>
@@ -211,7 +213,17 @@
     <Content Include="Properties\menu-server.png" />
     <Content Include="Properties\menu-settings.png" />
     <Content Include="Properties\menu-work.png" />
-    <None Include="Resources\img-work.png" />
+    <Content Include="Resourse\Work\pc-work-10.jpg" />
+    <Content Include="Resourse\Work\pc-work-5.jpg" />
+    <Content Include="Resourse\Work\pc-work-4.jpg" />
+    <Content Include="Resourse\Work\pc-work-6.jpg" />
+    <Content Include="Resourse\Work\pc-work-7.jpg" />
+    <Content Include="Resourse\Work\pc-work-8.png" />
+    <Content Include="Resourse\Work\pc-work-9.jpg" />
+    <None Include="Resourse\Work\pc-work-3.jpg" />
+    <Content Include="Resourse\Work\pc-work-1.jpg" />
+    <Content Include="Resourse\Work\pc-work-2.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
