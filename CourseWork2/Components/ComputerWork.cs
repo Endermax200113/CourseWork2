@@ -11,17 +11,28 @@ namespace CourseWork2.Components
 	{
 		#region [Переменные]
 		private int _count = 0;
+		private static int _lastRandCount = -1;
 		private bool _existsComps = true;
+		private decimal _price;
 		#endregion
 
 		#region [Свойства]
-		public int Count { get => _count; }
+		public int Count { get => _count; set { _count = value; } }
+		public decimal Price { get => _price; }
 		#endregion
 
-		public ComputerWork(int id, string name, TypeComputer type, Bitmap bmp) : base(id, name, type, bmp)
-		{	
-			Random rand = new Random();
-			_count = rand.Next(150);
+		public ComputerWork(int id, string name, TypeComputer type, Bitmap bmp, decimal price) : base(id, name, type, bmp)
+		{
+			_price = price;
+
+			do
+			{
+				Random rand = new Random();
+				_count = rand.Next(150);
+			}
+			while (_lastRandCount == _count);
+
+			_lastRandCount = _count;
 		}
 	}
 }
