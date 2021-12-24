@@ -18,6 +18,7 @@ using System.Drawing.Drawing2D;
 using UI.Animations;
 using System.Text.RegularExpressions;
 using CourseWork2.UI.Controls;
+using CourseWork2.Components.ComputerGame;
 
 namespace CourseWork2.UI.Forms.Main
 {
@@ -29,6 +30,12 @@ namespace CourseWork2.UI.Forms.Main
 		private StringFormat _sf = new StringFormat();
 		private Computer _comp;
 		private Form _formParent;
+		private Mothercard _mothercard;
+		private CPU _cpu;
+		private RAM _ram;
+		private GPU _gpu;
+		private HDD _hdd;
+		private Power _power;
 		#endregion
 
 		#region -> Кнопки
@@ -52,6 +59,27 @@ namespace CourseWork2.UI.Forms.Main
 			InitializeComponent();
 
 			_comp = comp;
+			_formParent = form;
+
+			_animBtnCloseA.Value = 255;
+			_animBtnCloseR.Value = 26;
+			_animBtnCloseG.Value = 28;
+			_animBtnCloseB.Value = 41;
+
+			_sf.Alignment = StringAlignment.Center;
+			_sf.LineAlignment = StringAlignment.Center;
+		}
+
+		public FormFill(Mothercard mothercard, CPU cpu, RAM ram, GPU gpu, HDD hdd, Power power, Form form)
+		{
+			InitializeComponent();
+
+			_mothercard = mothercard;
+			_cpu = cpu;
+			_ram = ram;
+			_gpu = gpu;
+			_hdd = hdd;
+			_power = power;
 			_formParent = form;
 
 			_animBtnCloseA.Value = 255;
@@ -278,7 +306,7 @@ namespace CourseWork2.UI.Forms.Main
 
 			if (compWork.Count <= 0)
 			{
-				MessageBox.Show("На складке больше нет таких компьютеров", "Нет компьютеров", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("На складе больше нет таких компьютеров", "Нет компьютеров", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 
@@ -366,11 +394,94 @@ namespace CourseWork2.UI.Forms.Main
 				}
 			}
 
-			if (!Order())
-				return;
+			if (_formParent is FormMenuWork)
+			{
+				if (!Order())
+					return;
+			}
+			else if (_formParent is FormMenuGame)
+			{
+				if (!OrderComponents())
+					return;
+			}
 
-			MessageBox.Show($"Заказ {_comp.Name} успешо оформлен", "Заказ оформлен", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			if (_formParent is FormMenuWork)
+				MessageBox.Show($"Заказ {_comp.Name} успешно оформлен", "Заказ оформлен", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			else if (_formParent is FormMenuGame)
+				MessageBox.Show($"Заказ игровых компонентов для компьютера успешно оформлен", "Заказ оформлен", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			
 			Close();
+		}
+
+		private bool OrderComponents()
+		{
+			if (_mothercard.Count <= 0)
+			{
+				MessageBox.Show("На складе нет такой материнской платы", "Нет материнской платы", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+			else if (_cpu.Count <= 0)
+			{
+				MessageBox.Show("На складе нет такого процессора", "Нет процессора", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+			else if (_ram.Count <= 0)
+			{
+				MessageBox.Show("На складе нет такой оперативной памяти", "Нет оперативной памяти", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+			else if (_gpu.Count <= 0)
+			{
+				MessageBox.Show("На складе нет такой видеокарты", "Нет видеокарты", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+			else if (_hdd.Count <= 0)
+			{
+				MessageBox.Show("На складе нет такого жёсткого диска", "Нет жёсткого диска", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+			else if (_cpu.Count <= 0)
+			{
+				MessageBox.Show("На складе нет такого блока питания", "Нет блока питания", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			DB db = new DB();
+
+			if (!db.Connect("coursework"))
+				return false;
+
+			decimal total = _mothercard.Price + _cpu.Price + _ram.Price + _gpu.Price + _hdd.Price + _power.Price;
+
+			MySqlCommand cmd = new MySqlCommand("INSERT INTO `game_components`(`username`, `motherboard`, `cpu`, `ram`, `gpu`, `hdd`, `power`, `price`) VALUES(@username, @motherboard, @cpu, @ram, @gpu, @hdd, @power, @price)");
+			cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = $"{tbName.Text} {tbLastname.Text}";
+			cmd.Parameters.Add("@motherboard", MySqlDbType.VarChar).Value = _mothercard.Name;
+			cmd.Parameters.Add("@cpu", MySqlDbType.VarChar).Value = _cpu.Name;
+			cmd.Parameters.Add("@ram", MySqlDbType.VarChar).Value = _ram.Name;
+			cmd.Parameters.Add("@gpu", MySqlDbType.VarChar).Value = _gpu.Name;
+			cmd.Parameters.Add("@hdd", MySqlDbType.VarChar).Value = _hdd.Name;
+			cmd.Parameters.Add("@power", MySqlDbType.VarChar).Value = _power.Name;
+			cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = total;
+			
+			db.ExecuteCommand(cmd);
+			db.Disconnect();
+
+			FormMenuGame formGame = (FormMenuGame)_formParent;
+			int idMothercard = _mothercard.ID;
+			int idCPU = _cpu.ID;
+			int idRAM = _ram.ID;
+			int idGPU = _gpu.ID;
+			int idHDD = _hdd.ID;
+			int idPower = _power.ID;
+
+			formGame.cbCompMothercard.Items[idMothercard] = $"{_mothercard.Name} Цена: {_mothercard.Price} [{--_mothercard.Count}]";
+			formGame.cbCompCPU.Items[idCPU] = $"{_cpu.Name} Цена: {_cpu.Price} [{--_cpu.Count}]";
+			formGame.cbCompRAM.Items[idRAM] = $"{_ram.Name} Цена: {_ram.Price} [{--_ram.Count}]";
+			formGame.cbCompGPU.Items[idGPU] = $"{_gpu.Name} Цена: {_gpu.Price} [{--_gpu.Count}]";
+			formGame.cbCompHDD.Items[idHDD] = $"{_hdd.Name} Цена: {_hdd.Price} [{--_hdd.Count}]";
+			formGame.cbCompPower.Items[idPower] = $"{_power.Name} Цена: {_power.Price} [{--_power.Count}]";
+
+			return true;
 		}
 		#endregion
 	}

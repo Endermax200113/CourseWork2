@@ -118,8 +118,206 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="game_cpu_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-8.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_cpu_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\CPU\game-cpu-9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_gpu_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\GPU\game-gpu-9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-8.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_hdd_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\HDD\game-hdd-9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_mothercard_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Mothercard\game-mothercard-9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-8.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_power_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\Power\game-power-9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-10.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-7.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-8.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="game_ram_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\RAM\game-ram-9.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="img_game" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>img-game.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_game_CPU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\img-game-CPU.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_game_GPU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\img-game-GPU.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_game_HDD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\img-game-HDD.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_game_mothercard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\img-game-mothercard.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_game_power" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\img-game-power.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_game_RAM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resourse\Game\img-game-RAM.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="img_server" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>img-server.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

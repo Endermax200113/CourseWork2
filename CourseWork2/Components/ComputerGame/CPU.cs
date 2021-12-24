@@ -5,29 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseWork2.Components
+namespace CourseWork2.Components.ComputerGame
 {
-	public class ComputerWork : Computer
+	public class CPU : ComputerComponent
 	{
 		#region [Переменные]
 		private int _count = 0;
 		private static int _lastRandCount = -1;
-		private decimal _price;
 		#endregion
 
 		#region [Свойства]
 		public int Count { get => _count; set { _count = value; } }
-		public decimal Price { get => _price; }
 		#endregion
 
-		public ComputerWork(int id, string name, Bitmap bmp, decimal price) : base(id, name, TypeComputer.ForWork, bmp)
+		public CPU(int id, string name, Bitmap img, decimal price) : base(id, name, img, price, TypeCompoment.CPU)
 		{
-			_price = price;
-
 			do
 			{
 				Random rand = new Random();
-				_count = rand.Next(150);
+				_count = rand.Next(200);
 			}
 			while (_lastRandCount == _count);
 

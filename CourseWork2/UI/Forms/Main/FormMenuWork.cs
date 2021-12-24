@@ -19,7 +19,7 @@ using UI.Animations;
 
 namespace CourseWork2.UI.Forms.Main
 {
-	public partial class FormMenuWork : Form
+	public partial class FormMenuWork : ShadowForm
 	{
 		#region [Переменные]
 		#region -> Общие
@@ -51,19 +51,20 @@ namespace CourseWork2.UI.Forms.Main
 		public FormMenuWork(FormMain form)
 		{
 			InitializeComponent();
+			SetDoubleBuffered(this);
 
 			_formParent = form;
 
-			_listCompsForWork.Add(new ComputerWork(1, "DEXP Aquilon O234", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_1), 12_999.00m));
-			_listCompsForWork.Add(new ComputerWork(2, "Acer Aspire XC-830 [DT.BE8ER.003]", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_2), 16_999.00m));
-			_listCompsForWork.Add(new ComputerWork(3, "DEXP Atlas H306", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_3), 22_999.00m));
-			_listCompsForWork.Add(new ComputerWork(4, "HP Slim Desktop S01-aF0036ur [4D8N2EA]", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_4), 23_999.00m));
-			_listCompsForWork.Add(new ComputerWork(5, "ASUS ExpertCenter D5 SFF D500SC [90PF02K1-M006Y0]", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_5), 30_199.00m));
-			_listCompsForWork.Add(new ComputerWork(6, "DEXP Atlas H322", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_6), 32_999.00m));
-			_listCompsForWork.Add(new ComputerWork(7, "Lenovo IdeaCentre 3 07IMB05 [90NB004WRS]", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_7), 31_999.00m));
-			_listCompsForWork.Add(new ComputerWork(8, "ASUS ExpertCenter D5 SFF D500SC [90PF02K1-M02870]", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_8), 35_999.00m));
-			_listCompsForWork.Add(new ComputerWork(9, "ASUS U500MA-R4300G0040 [90PF02F2-M07900]", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_9), 38_999.00m));
-			_listCompsForWork.Add(new ComputerWork(10, "DEXP Mars E329", Computer.TypeComputer.ForWork, new Bitmap(Resources.pc_work_10), 58_999.00m));
+			_listCompsForWork.Add(new ComputerWork(1, "DEXP Aquilon O234", new Bitmap(Resources.pc_work_1), 12_999.00m));
+			_listCompsForWork.Add(new ComputerWork(2, "Acer Aspire XC-830", new Bitmap(Resources.pc_work_2), 16_999.00m));
+			_listCompsForWork.Add(new ComputerWork(3, "DEXP Atlas H306", new Bitmap(Resources.pc_work_3), 22_999.00m));
+			_listCompsForWork.Add(new ComputerWork(4, "HP Slim Desktop S01-aF0036ur", new Bitmap(Resources.pc_work_4), 23_999.00m));
+			_listCompsForWork.Add(new ComputerWork(5, "ASUS ExpertCenter D5 SFF D500SC", new Bitmap(Resources.pc_work_5), 30_199.00m));
+			_listCompsForWork.Add(new ComputerWork(6, "DEXP Atlas H322", new Bitmap(Resources.pc_work_6), 32_999.00m));
+			_listCompsForWork.Add(new ComputerWork(7, "Lenovo IdeaCentre 3 07IMB05", new Bitmap(Resources.pc_work_7), 31_999.00m));
+			_listCompsForWork.Add(new ComputerWork(8, "ASUS ExpertCenter D5 SFF D500SC", new Bitmap(Resources.pc_work_8), 35_999.00m));
+			_listCompsForWork.Add(new ComputerWork(9, "ASUS U500MA-R4300G0040", new Bitmap(Resources.pc_work_9), 38_999.00m));
+			_listCompsForWork.Add(new ComputerWork(10, "DEXP Mars E329", new Bitmap(Resources.pc_work_10), 58_999.00m));
 
 			_sf.Alignment = StringAlignment.Center;
 			_sf.LineAlignment = StringAlignment.Center;
@@ -344,10 +345,6 @@ namespace CourseWork2.UI.Forms.Main
 		}
 		#endregion
 		#endregion
-		#endregion
-
-		#region [Методы]
-
 		#endregion
 	}
 }

@@ -35,24 +35,24 @@ namespace CourseWork2.UI.Forms.Main
 			this.btnWork = new CourseWork2.UI.Controls.FlatButton();
 			this.pnlWork = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlWorkImg = new CourseWork2.UI.Controls.FlatPanel();
+			this.imgWork = new System.Windows.Forms.PictureBox();
 			this.pnlGame = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlGameImg = new CourseWork2.UI.Controls.FlatPanel();
+			this.imgGame = new System.Windows.Forms.PictureBox();
 			this.btnGame = new CourseWork2.UI.Controls.FlatButton();
 			this.pnlServer = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlServerImg = new CourseWork2.UI.Controls.FlatPanel();
-			this.btnServer = new CourseWork2.UI.Controls.FlatButton();
 			this.imgServer = new System.Windows.Forms.PictureBox();
-			this.imgGame = new System.Windows.Forms.PictureBox();
-			this.imgWork = new System.Windows.Forms.PictureBox();
+			this.btnServer = new CourseWork2.UI.Controls.FlatButton();
 			this.pnlWork.SuspendLayout();
 			this.pnlWorkImg.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.imgWork)).BeginInit();
 			this.pnlGame.SuspendLayout();
 			this.pnlGameImg.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.imgGame)).BeginInit();
 			this.pnlServer.SuspendLayout();
 			this.pnlServerImg.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.imgServer)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgGame)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgWork)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lblPointer
@@ -117,6 +117,23 @@ namespace CourseWork2.UI.Forms.Main
 			this.pnlWorkImg.Size = new System.Drawing.Size(510, 112);
 			this.pnlWorkImg.TabIndex = 5;
 			// 
+			// imgWork
+			// 
+			this.imgWork.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.imgWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.imgWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.imgWork.Image = ((System.Drawing.Image)(resources.GetObject("imgWork.Image")));
+			this.imgWork.InitialImage = null;
+			this.imgWork.Location = new System.Drawing.Point(0, 0);
+			this.imgWork.Margin = new System.Windows.Forms.Padding(0);
+			this.imgWork.Name = "imgWork";
+			this.imgWork.Size = new System.Drawing.Size(510, 112);
+			this.imgWork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.imgWork.TabIndex = 0;
+			this.imgWork.TabStop = false;
+			// 
 			// pnlGame
 			// 
 			this.pnlGame.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -140,6 +157,21 @@ namespace CourseWork2.UI.Forms.Main
 			this.pnlGameImg.Name = "pnlGameImg";
 			this.pnlGameImg.Size = new System.Drawing.Size(245, 112);
 			this.pnlGameImg.TabIndex = 1;
+			// 
+			// imgGame
+			// 
+			this.imgGame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.imgGame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.imgGame.Image = global::CourseWork2.Properties.Resources.img_game;
+			this.imgGame.Location = new System.Drawing.Point(0, 0);
+			this.imgGame.Margin = new System.Windows.Forms.Padding(0);
+			this.imgGame.Name = "imgGame";
+			this.imgGame.Size = new System.Drawing.Size(245, 112);
+			this.imgGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.imgGame.TabIndex = 0;
+			this.imgGame.TabStop = false;
 			// 
 			// btnGame
 			// 
@@ -189,6 +221,21 @@ namespace CourseWork2.UI.Forms.Main
 			this.pnlServerImg.Size = new System.Drawing.Size(245, 112);
 			this.pnlServerImg.TabIndex = 1;
 			// 
+			// imgServer
+			// 
+			this.imgServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.imgServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.imgServer.Image = global::CourseWork2.Properties.Resources.img_server;
+			this.imgServer.Location = new System.Drawing.Point(0, 0);
+			this.imgServer.Margin = new System.Windows.Forms.Padding(0);
+			this.imgServer.Name = "imgServer";
+			this.imgServer.Size = new System.Drawing.Size(245, 112);
+			this.imgServer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.imgServer.TabIndex = 0;
+			this.imgServer.TabStop = false;
+			// 
 			// btnServer
 			// 
 			this.btnServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -213,50 +260,6 @@ namespace CourseWork2.UI.Forms.Main
 			this.btnServer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnServer_OnMouseDown);
 			this.btnServer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnServer_OnMouseUp);
 			// 
-			// imgServer
-			// 
-			this.imgServer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.imgServer.Image = global::CourseWork2.Properties.Resources.img_server;
-			this.imgServer.Location = new System.Drawing.Point(0, 0);
-			this.imgServer.Margin = new System.Windows.Forms.Padding(0);
-			this.imgServer.Name = "imgServer";
-			this.imgServer.Size = new System.Drawing.Size(245, 112);
-			this.imgServer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this.imgServer.TabIndex = 0;
-			this.imgServer.TabStop = false;
-			// 
-			// imgGame
-			// 
-			this.imgGame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.imgGame.Image = global::CourseWork2.Properties.Resources.img_game;
-			this.imgGame.Location = new System.Drawing.Point(0, 0);
-			this.imgGame.Margin = new System.Windows.Forms.Padding(0);
-			this.imgGame.Name = "imgGame";
-			this.imgGame.Size = new System.Drawing.Size(245, 112);
-			this.imgGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this.imgGame.TabIndex = 0;
-			this.imgGame.TabStop = false;
-			// 
-			// imgWork
-			// 
-			this.imgWork.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.imgWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.imgWork.Image = ((System.Drawing.Image)(resources.GetObject("imgWork.Image")));
-			this.imgWork.InitialImage = null;
-			this.imgWork.Location = new System.Drawing.Point(0, 0);
-			this.imgWork.Margin = new System.Windows.Forms.Padding(0);
-			this.imgWork.Name = "imgWork";
-			this.imgWork.Size = new System.Drawing.Size(510, 112);
-			this.imgWork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this.imgWork.TabIndex = 0;
-			this.imgWork.TabStop = false;
-			// 
 			// FormMenuMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,13 +278,13 @@ namespace CourseWork2.UI.Forms.Main
 			this.Resize += new System.EventHandler(this.FormMenuMain_OnResize);
 			this.pnlWork.ResumeLayout(false);
 			this.pnlWorkImg.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.imgWork)).EndInit();
 			this.pnlGame.ResumeLayout(false);
 			this.pnlGameImg.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.imgGame)).EndInit();
 			this.pnlServer.ResumeLayout(false);
 			this.pnlServerImg.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.imgServer)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgGame)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.imgWork)).EndInit();
 			this.ResumeLayout(false);
 
 		}
