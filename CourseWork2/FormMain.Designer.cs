@@ -31,7 +31,7 @@ namespace CourseWork2
         /// </summary>
         private void InitializeComponent()
         {
-			this.pnlBorderBottom1 = new System.Windows.Forms.Panel();
+			this.pnlBorderBottom1 = new FlatPanel();
 			this.pnlBorderLeft3 = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBorderRight2 = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBorderLeft2 = new CourseWork2.UI.Controls.FlatPanel();
@@ -45,9 +45,9 @@ namespace CourseWork2
 			this.pnlBorderTopLeft = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlMain = new CourseWork2.UI.Controls.FlatPanel();
 			this.pnlBasic = new CourseWork2.UI.Controls.FlatPanel();
-			this.pnlForm = new System.Windows.Forms.Panel();
+			this.pnlForm = new FlatPanel();
 			this.pnlMenu = new CourseWork2.UI.Controls.FlatPanel();
-			this.btnMenuSettings = new CourseWork2.UI.Controls.FlatButton();
+			this.btnExit = new CourseWork2.UI.Controls.FlatButton();
 			this.btnMenuServer = new CourseWork2.UI.Controls.FlatButton();
 			this.btnMenuGame = new CourseWork2.UI.Controls.FlatButton();
 			this.btnMenuWork = new CourseWork2.UI.Controls.FlatButton();
@@ -287,7 +287,7 @@ namespace CourseWork2
 			this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
 			this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.pnlMenu.Controls.Add(this.btnMenuSettings);
+			this.pnlMenu.Controls.Add(this.btnExit);
 			this.pnlMenu.Controls.Add(this.btnMenuServer);
 			this.pnlMenu.Controls.Add(this.btnMenuGame);
 			this.pnlMenu.Controls.Add(this.btnMenuWork);
@@ -298,32 +298,32 @@ namespace CourseWork2
 			this.pnlMenu.Size = new System.Drawing.Size(250, 425);
 			this.pnlMenu.TabIndex = 0;
 			// 
-			// btnMenuSettings
+			// btnExit
 			// 
-			this.btnMenuSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.btnMenuSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.btnMenuSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.btnMenuSettings.FlatAppearance.BorderSize = 0;
-			this.btnMenuSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.btnMenuSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.btnMenuSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnMenuSettings.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnMenuSettings.ForeColor = System.Drawing.Color.White;
-			this.btnMenuSettings.Image = global::CourseWork2.Properties.Resources.menu_settings;
-			this.btnMenuSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnMenuSettings.Location = new System.Drawing.Point(0, 385);
-			this.btnMenuSettings.Margin = new System.Windows.Forms.Padding(0);
-			this.btnMenuSettings.Name = "btnMenuSettings";
-			this.btnMenuSettings.Size = new System.Drawing.Size(250, 40);
-			this.btnMenuSettings.TabIndex = 4;
-			this.btnMenuSettings.Text = "Настройки";
-			this.btnMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnMenuSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.btnMenuSettings.UseVisualStyleBackColor = false;
-			this.btnMenuSettings.Click += new System.EventHandler(this.BtnMenuSettings_OnClick);
-			this.btnMenuSettings.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnMenuSettings_OnPaint);
-			this.btnMenuSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnMenuSettings_OnMouseDown);
-			this.btnMenuSettings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnMenuSettings_OnMouseUp);
+			this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnExit.FlatAppearance.BorderSize = 0;
+			this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnExit.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.btnExit.ForeColor = System.Drawing.Color.White;
+			this.btnExit.Image = global::CourseWork2.Properties.Resources.exit;
+			this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnExit.Location = new System.Drawing.Point(0, 385);
+			this.btnExit.Margin = new System.Windows.Forms.Padding(0);
+			this.btnExit.Name = "btnExit";
+			this.btnExit.Size = new System.Drawing.Size(250, 40);
+			this.btnExit.TabIndex = 4;
+			this.btnExit.Text = "Выйти";
+			this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.btnExit.UseVisualStyleBackColor = false;
+			this.btnExit.Click += new System.EventHandler(this.BtnExit_OnClick);
+			this.btnExit.Paint += new System.Windows.Forms.PaintEventHandler(this.BtnExit_OnPaint);
+			this.btnExit.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnExit_OnMouseDown);
+			this.btnExit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnExit_OnMouseUp);
 			// 
 			// btnMenuServer
 			// 
@@ -592,7 +592,6 @@ namespace CourseWork2
 			this.pnlBorderLeft6.Name = "pnlBorderLeft6";
 			this.pnlBorderLeft6.Size = new System.Drawing.Size(5, 40);
 			this.pnlBorderLeft6.TabIndex = 13;
-			this.pnlBorderLeft6.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlBorderLeft5_OnPaint);
 			this.pnlBorderLeft6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseDown);
 			this.pnlBorderLeft6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PnlBorderLeft_OnMouseMove);
 			this.pnlBorderLeft6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PnlBoderLeft_OnMouseUp);
@@ -679,14 +678,14 @@ namespace CourseWork2
 		private FlatButton btnMenuMain;
 		private FlatButton btnMenuWork;
 		private FlatButton btnMenuGame;
-		private FlatButton btnMenuSettings;
+		private FlatButton btnExit;
 		private FlatButton btnMenuServer;
-		private System.Windows.Forms.Panel pnlBorderBottom1;
+		private FlatPanel pnlBorderBottom1;
 		private FlatPanel pnlBorderLeft3;
 		private FlatPanel pnlBorderLeft4;
 		private FlatPanel pnlBorderLeft5;
 		private FlatPanel pnlBorderLeft6;
 		private FlatPanel pnlBorderLeft7;
-		private System.Windows.Forms.Panel pnlForm;
+		private FlatPanel pnlForm;
 	}
 }

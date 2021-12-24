@@ -71,9 +71,10 @@ namespace CourseWork2
         private Animation _animWavePressServer = new Animation();
         #endregion
 
-        #region -[Настройки]-
-        private Point _clLocationSettings = new Point();
-        private Animation _animWavePressSettings = new Animation();
+        #region -[Выйти]-
+        private Point _clLocationExit = new Point();
+        private Animation _animWavePressExit = new Animation();
+        private bool _mousePressedExit  = false;
         #endregion
         #endregion
 
@@ -118,12 +119,6 @@ namespace CourseWork2
                         BtnMenuServer_OnMouseDown(btnMenuServer, e);
                         BtnMenuServer_OnMouseUp(btnMenuServer, e);
                     }
-                    else if (value is FormMenuSettings)
-                    {
-                        MouseEventArgs e = new MouseEventArgs(MouseButtons.Left, 1, btnMenuSettings.Width / 2, btnMenuSettings.Height / 2, 0);
-                        BtnMenuSettings_OnMouseDown(btnMenuSettings, e);
-                        BtnMenuSettings_OnMouseUp(btnMenuSettings, e);
-                    }
 
                     OpenChildForm(value);
                 }
@@ -134,7 +129,7 @@ namespace CourseWork2
 
 		private enum TypeForm
 		{
-            Main, Work, Game, Server, Settings
+            Main, Work, Game, Server
 		}
 
         public FormMain()
@@ -184,7 +179,7 @@ namespace CourseWork2
             btnMenuWork.Font = new Font(_pfc.Families[0], 12);
             btnMenuGame.Font = new Font(_pfc.Families[0], 12);
             btnMenuServer.Font = new Font(_pfc.Families[0], 12);
-            btnMenuSettings.Font = new Font(_pfc.Families[0], 12);
+            btnExit.Font = new Font(_pfc.Families[0], 12);
         }
 
         private void FormMain_OnShown(object sender, EventArgs e)
@@ -748,93 +743,61 @@ namespace CourseWork2
         }
         #endregion
 
-        #region -[Настройки]-
-        private void BtnMenuSettings_OnPaint(object sender, PaintEventArgs e)
+        #region -[Выйти]-
+        private void BtnExit_OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.SmoothingMode = SmoothingMode.HighQuality;
-            g.Clear(Color.FromArgb(255, 32, 34, 50));
+            g.Clear(Color.FromArgb(32, 34, 50));
 
-            Rectangle rectWave;
+            Rectangle rectWave = new Rectangle(
+                _clLocationExit.X - (int)_animWavePressExit.Value / 2,
+                _clLocationExit.Y - (int)_animWavePressExit.Value / 2,
+                (int)_animWavePressExit.Value,
+                (int)_animWavePressExit.Value
+            );
+            Rectangle rect = new Rectangle(0, 0, btnExit.Width, btnExit.Height);
 
-            if (_typeForm == TypeForm.Settings)
+            if (_animWavePressExit.Value > 0 && _animWavePressExit.Value < _animWavePressExit.TargetValue)
+                g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
+            else if (_animWavePressExit.Value == _animWavePressExit.TargetValue)
             {
-                rectWave = new Rectangle(
-                   _clLocationSettings.X - (int)_animWavePressSettings.Value / 2,
-                   _clLocationSettings.Y - (int)_animWavePressSettings.Value / 2,
-                   (int)_animWavePressSettings.Value,
-                   (int)_animWavePressSettings.Value
-               );
-            }
-            else
-            {
-                rectWave = new Rectangle(
-                    btnMenuSettings.Width / 2 - (int)_animWavePressSettings.Value / 2,
-                    btnMenuSettings.Height / 2 - (int)_animWavePressSettings.Value / 2,
-                    (int)_animWavePressSettings.Value,
-                    (int)_animWavePressSettings.Value
-                );
-            }
-            Rectangle rect = new Rectangle(0, 0, btnMenuSettings.Width, btnMenuSettings.Height);
+                _animWavePressExit.Value = -1;
 
-            if (_typeForm == TypeForm.Settings)
-            {
-                if (_animWavePressSettings.Value > 0 && _animWavePressSettings.Value < _animWavePressSettings.TargetValue)
-                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
-                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
-                {
-                    _animWavePressSettings.Value = -1;
+                if (_mousePressedExit)
                     g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-                }
-                else
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-            }
-            else
-            {
-                if (_animWavePressSettings.Value > 0)
-                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
-                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
-                    _animWavePressSettings.Value = 0;
-                else
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
             }
 
             Rectangle rectImg = new Rectangle(8, 6, 24, 24);
-            Rectangle rectText = new Rectangle(36, 0, btnMenuSettings.Width - 36, btnMenuSettings.Height);
+            Rectangle rectText = new Rectangle(36, 0, btnExit.Width - 36, btnExit.Height);
 
-            g.DrawImage(btnMenuSettings.Image, rectImg);
-            g.DrawString(btnMenuSettings.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
+            g.DrawImage(btnExit.Image, rectImg);
+            g.DrawString(btnExit.Text, new Font(_pfc.Families[0], 12), new SolidBrush(Color.White), rectText, _sfMenu);
         }
 
-        private void BtnMenuSettings_OnMouseDown(object sender, MouseEventArgs e)
+        private void BtnExit_OnMouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && _typeForm != TypeForm.Settings)
+            if (e.Button == MouseButtons.Left)
             {
-                _typeForm = TypeForm.Settings;
-                _clLocationSettings = e.Location;
+                _mousePressedExit = true;
+                _clLocationExit = e.Location;
 
-                _animWavePressSettings = new Animation("btnMenuSettingsPress_" + btnMenuSettings.Handle, Wave, 0, btnMenuSettings.Width * 2);
-                Animator.Request(_animWavePressSettings, true);
-
-                void Wave()
-                {
-                    btnMenuSettings.Invalidate();
-                    pnlBorderLeft6.Invalidate();
-                }
+                _animWavePressExit = new Animation("btnExitPress_" + btnExit.Handle, btnExit.Invalidate, 0, btnExit.Width * 2);
+                Animator.Request(_animWavePressExit, true);
             }
         }
 
-        private void BtnMenuSettings_OnMouseUp(object sender, MouseEventArgs e)
-		{
-            if (e.Button == MouseButtons.Left && _typeForm == TypeForm.Settings)
-                OffButtonAnimate(_typeForm);
+        private void BtnExit_OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                _mousePressedExit = false;
         }
 
-        private void BtnMenuSettings_OnClick(object sender, EventArgs e)
-        {
-            if (_typeForm == TypeForm.Settings)
-                OpenChildForm(new FormMenuSettings());
-        }
+        private void BtnExit_OnClick(object sender, EventArgs e)
+		{
+            Close();
+            FormAuth.SelfForm.Show();
+		}
         #endregion
         #endregion
 
@@ -1377,57 +1340,6 @@ namespace CourseWork2
                     g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
             }
         }
-
-        private void PnlBorderLeft5_OnPaint(object sender, PaintEventArgs e)
-		{
-            Graphics g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.HighQuality;
-            g.Clear(Color.FromArgb(255, 32, 34, 50));
-
-            Rectangle rectWave;
-
-            if (_typeForm == TypeForm.Settings)
-            {
-                rectWave = new Rectangle(
-                   _clLocationSettings.X - (int)_animWavePressSettings.Value / 2,
-                   _clLocationSettings.Y - (int)_animWavePressSettings.Value / 2,
-                   (int)_animWavePressSettings.Value,
-                   (int)_animWavePressSettings.Value
-               );
-            }
-            else
-            {
-                rectWave = new Rectangle(
-                    btnMenuSettings.Width / 2 - (int)_animWavePressSettings.Value / 2,
-                    btnMenuSettings.Height / 2 - (int)_animWavePressSettings.Value / 2,
-                    (int)_animWavePressSettings.Value,
-                    (int)_animWavePressSettings.Value
-                );
-            }
-            Rectangle rect = new Rectangle(0, 0, btnMenuSettings.Width, btnMenuSettings.Height);
-
-            if (_typeForm == TypeForm.Settings)
-            {
-                if (_animWavePressSettings.Value > 0 && _animWavePressSettings.Value < _animWavePressSettings.TargetValue)
-                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
-                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
-                {
-                    _animWavePressSettings.Value = -1;
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-                }
-                else
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, 0, 0, 0)), rect);
-            }
-            else
-            {
-                if (_animWavePressSettings.Value > 0)
-                    g.FillEllipse(new SolidBrush(Color.FromArgb(25, Color.Black)), rectWave);
-                else if (_animWavePressSettings.Value == _animWavePressSettings.TargetValue)
-                    _animWavePressSettings.Value = 0;
-                else
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(25, Color.Black)), rect);
-            }
-        }
         #endregion
         #endregion
         #endregion
@@ -1539,18 +1451,6 @@ namespace CourseWork2
                 {
                     btnMenuServer.Invalidate();
                     pnlBorderLeft5.Invalidate();
-                }
-            }
-            else if (_animWavePressSettings.Value != 0 && typeForm != TypeForm.Settings)
-			{
-                _animWavePressSettings = new Animation("btnMenuSettingsUp_" + btnMenuSettings.Handle, Wave, btnMenuSettings.Width * 2, 0);
-                Animator.Request(_animWavePressSettings, true);
-                btnMenuSettings.Invalidate();
-
-                void Wave()
-                {
-                    btnMenuSettings.Invalidate();
-                    pnlBorderLeft6.Invalidate();
                 }
             }
         }

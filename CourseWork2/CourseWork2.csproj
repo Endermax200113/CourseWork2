@@ -145,12 +145,6 @@
     <Compile Include="UI\Forms\Main\FormMenuServer.Designer.cs">
       <DependentUpon>FormMenuServer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\Main\FormMenuSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Forms\Main\FormMenuSettings.Designer.cs">
-      <DependentUpon>FormMenuSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\Forms\Main\FormMenuWork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,9 +185,6 @@
     <EmbeddedResource Include="UI\Forms\Main\FormMenuServer.resx">
       <DependentUpon>FormMenuServer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\Main\FormMenuSettings.resx">
-      <DependentUpon>FormMenuSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\Main\FormMenuWork.resx">
       <DependentUpon>FormMenuWork.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,13 +215,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Properties\exit.png" />
     <Content Include="Properties\img-game.jpg" />
     <Content Include="Properties\img-server.jpeg" />
     <Content Include="Properties\img-work.png" />
     <Content Include="Properties\menu-game.png" />
     <Content Include="Properties\menu-main.png" />
     <Content Include="Properties\menu-server.png" />
-    <Content Include="Properties\menu-settings.png" />
     <Content Include="Properties\menu-work.png" />
     <Content Include="Resourse\Game\CPU\game-cpu-1.jpg" />
     <Content Include="Resourse\Game\CPU\game-cpu-10.jpg" />
