@@ -302,12 +302,28 @@ namespace CourseWork2.UI.Forms.Main
 		private bool Order()
 		{
 			string compFor = "";
-			ComputerWork compWork = (ComputerWork)_comp;
+			ComputerWork compWork = null;
+			ComputerServer compServer = null;
 
-			if (compWork.Count <= 0)
+			if (_formParent is FormMenuWork)
 			{
-				MessageBox.Show("На складе больше нет таких компьютеров", "Нет компьютеров", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
+				compWork = (ComputerWork)_comp;
+
+				if (compWork.Count <= 0)
+				{
+					MessageBox.Show("На складе больше нет таких компьютеров", "Нет компьютеров", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+			}
+			else if (_formParent is FormMenuServer)
+			{
+				compServer = (ComputerServer)_comp;
+
+				if (compServer.Count <= 0)
+				{
+					MessageBox.Show("На складе больше нет таких серверных компьютеров", "Нет серверных компьютеров", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
 			}
 
 			DB db = new DB();
@@ -326,16 +342,27 @@ namespace CourseWork2.UI.Forms.Main
 			cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = $"{tbName.Text} {tbLastname.Text}";
 			cmd.Parameters.Add("@computer", MySqlDbType.VarChar).Value = _comp.Name;
 			cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = compFor;
-			cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = compWork.Price;
+			cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = _formParent is FormMenuWork ? compWork.Price : compServer.Price;
 
 			db.ExecuteCommand(cmd);
 			db.Disconnect();
 
-			FormMenuWork formWork = (FormMenuWork)_formParent;
-			int id = _comp.ID;
-			FlatPanel pnlMain = (FlatPanel)formWork.pnlComponents.Controls[id - 1];
-			FlatLabel lblTotal = (FlatLabel)pnlMain.Controls[2];
-			lblTotal.Text = $"На складе осталось: {--compWork.Count}";
+			if (_formParent is FormMenuWork)
+			{
+				FormMenuWork formWork = (FormMenuWork)_formParent;
+				int id = _comp.ID;
+				FlatPanel pnlMain = (FlatPanel)formWork.pnlComponents.Controls[id - 1];
+				FlatLabel lblTotal = (FlatLabel)pnlMain.Controls[2];
+				lblTotal.Text = $"На складе осталось: {--compWork.Count}";
+			}
+			else if (_formParent is FormMenuServer)
+			{
+				FormMenuServer formServer = (FormMenuServer)_formParent;
+				int id = _comp.ID;
+				FlatPanel pnlMain = (FlatPanel)formServer.pnlComponents.Controls[id - 1];
+				FlatLabel lblTotal = (FlatLabel)pnlMain.Controls[2];
+				lblTotal.Text = $"На складе осталось: {--compServer.Count}";
+			}
 
 			return true;
 		}
@@ -394,7 +421,7 @@ namespace CourseWork2.UI.Forms.Main
 				}
 			}
 
-			if (_formParent is FormMenuWork)
+			if (_formParent is FormMenuWork || _formParent is FormMenuServer)
 			{
 				if (!Order())
 					return;
@@ -405,7 +432,7 @@ namespace CourseWork2.UI.Forms.Main
 					return;
 			}
 
-			if (_formParent is FormMenuWork)
+			if (_formParent is FormMenuWork || _formParent is FormMenuServer)
 				MessageBox.Show($"Заказ {_comp.Name} успешно оформлен", "Заказ оформлен", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			else if (_formParent is FormMenuGame)
 				MessageBox.Show($"Заказ игровых компонентов для компьютера успешно оформлен", "Заказ оформлен", MessageBoxButtons.OK, MessageBoxIcon.Information);

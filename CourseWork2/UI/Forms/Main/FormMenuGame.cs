@@ -168,6 +168,11 @@ namespace CourseWork2.UI.Forms.Main
 				Marshal.FreeCoTaskMem(data);
 			}
 
+			lblPointer.Font = new Font(_pfc.Families[0], 16);
+			btnSimulationStart.Font = new Font(_pfc.Families[0], 12);
+			btnSimulationStop.Font = new Font(_pfc.Families[0], 12);
+			lblSimulationInfo.Font = new Font(_pfc.Families[0], 10);
+
 			foreach (Mothercard mothercard in _listMothercard)
 				cbCompMothercard.Items.Add($"{mothercard.Name} Цена: {mothercard.Price} руб. [{mothercard.Count}]");
 

@@ -20,6 +20,7 @@ namespace CourseWork2.Simulation
 		private bool _isWorking = false;
 		private int _countUser = 0;
 		private List<ComputerWork> _listCompWork;
+		private List<ComputerServer> _listCompServer;
 		private List<Mothercard> _listMothercard;
 		private List<CPU> _listCPU;
 		private List<RAM> _listRAM;
@@ -50,6 +51,14 @@ namespace CourseWork2.Simulation
 			_listGPU = gpu;
 			_listHDD = hdd;
 			_listPower = power;
+			_parentForm = form;
+
+			GeneratorUser.FillFull();
+		}
+
+		public Simulator(List<ComputerServer> listComp, Form form)
+		{
+			_listCompServer = listComp;
 			_parentForm = form;
 
 			GeneratorUser.FillFull();
@@ -96,7 +105,7 @@ namespace CourseWork2.Simulation
 
 				if (comp.Count <= 0)
 				{
-					formWork.lblSimulationInfo.Text = $"На складе нет компьютера {comp.Name}";
+					formWork.Invoke(new Action(() => formWork.lblSimulationInfo.Text = $"На складе нет компьютера {comp.Name}"));
 					return false;
 				}
 
@@ -135,32 +144,32 @@ namespace CourseWork2.Simulation
 
 				if (mothercard.Count <= 0)
 				{
-					formGame.lblSimulationInfo.Text = $"На складе нет материнской платы {mothercard.Name}";
+					formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"На складе нет материнской платы {mothercard.Name}"));
 					return false;
 				}
 				else if (cpu.Count <= 0)
 				{
-					formGame.lblSimulationInfo.Text = $"На складе нет процессора {cpu.Name}";
+					formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"На складе нет процессора {cpu.Name}"));
 					return false;
 				}
 				else if (ram.Count <= 0)
 				{
-					formGame.lblSimulationInfo.Text = $"На складе нет оперативной памяти {ram.Name}";
+					formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"На складе нет оперативной памяти {ram.Name}"));
 					return false;
 				}
 				else if (gpu.Count <= 0)
 				{
-					formGame.lblSimulationInfo.Text = $"На складе нет видеокарты {gpu.Name}";
+					formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"На складе нет видеокарты {gpu.Name}"));
 					return false;
 				}
 				else if (hdd.Count <= 0)
 				{
-					formGame.lblSimulationInfo.Text = $"На складе нет жёсткого диска {hdd.Name}";
+					formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"На складе нет жёсткого диска {hdd.Name}"));
 					return false;
 				}
 				else if (power.Count <= 0)
 				{
-					formGame.lblSimulationInfo.Text = $"На складе нет блока питания {power.Name}";
+					formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"На складе нет блока питания {power.Name}"));
 					return false;
 				}
 
@@ -201,6 +210,40 @@ namespace CourseWork2.Simulation
 				formGame.Invoke(new Action(() => formGame.lblSimulationInfo.Text = $"{_countUser + 1}: {username} -> {total} р."));
 
 				return true;
+			}
+			else if (_parentForm is FormMenuServer)
+			{
+				FormMenuServer formServer = (FormMenuServer)_parentForm;
+				ComputerServer comp = _listCompServer[rand.Next(0, _listCompServer.Count)];
+
+				if (comp.Count <= 0)
+				{
+					formServer.Invoke(new Action(() => formServer.lblSimulationInfo.Text = $"На складе нет компьютера {comp.Name}"));
+					return false;
+				}
+
+				DB db = new DB();
+
+				if (!db.Connect("coursework"))
+					return false;
+
+				string compFor = "For Server";
+
+				MySqlCommand cmd = new MySqlCommand("INSERT INTO `orders`(`username`, `computer`, `type`, `price`) VALUES(@username, @computer, @type, @price)");
+				cmd.Parameters.Add("@username", MySqlDbType.VarChar).Value = username;
+				cmd.Parameters.Add("@computer", MySqlDbType.VarChar).Value = comp.Name;
+				cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = compFor;
+				cmd.Parameters.Add("@price", MySqlDbType.Decimal).Value = comp.Price;
+
+				db.ExecuteCommand(cmd);
+				db.Disconnect();
+
+				int id = comp.ID;
+				FlatPanel pnlMain = (FlatPanel)formServer.pnlComponents.Controls[id - 1];
+				FlatLabel lblTotal = (FlatLabel)pnlMain.Controls[2];
+				lblTotal.Invoke(new Action(() => lblTotal.Text = $"На складе осталось: {--comp.Count}"));
+
+				formServer.Invoke(new Action(() => formServer.lblSimulationInfo.Text = $"{_countUser + 1}: {username} -> {comp.Name}"));
 			}
 
 			return true;
